@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 
@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
 		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 		<link rel="stylesheet" href="css/style.css" media="screen">
-		
+
 		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="js/moment.min.js"></script>
 		<script type="text/javascript" src="js/transition.js"></script>
@@ -72,6 +72,7 @@
 							<li><a href="#broadcast" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
 							<li><a href="#wallet" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Wallet</a></li>
 							<li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+							<li><a href="#new" data-toggle="tab"><span class="glyphicon glyphicon-warning-sign"></span> New</a></li>
 
 							<li class="hidden"><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 						</ul>
@@ -144,7 +145,7 @@
 										<p>Use the form below to open a wallet and begin using this service.</p>
 
 										<div class="alert alert-warning">
-											<b>Notice</b>: Different email address and password combination will open different wallets, be careful when entering your details as lost accounts can not be recovered! 
+											<b>Notice</b>: Different email address and password combination will open different wallets, be careful when entering your details as lost accounts can not be recovered!
 										</div>
 
 										<input id="openEmail" type="email" class="form-control" placeholder="Email address" required autofocus>
@@ -316,6 +317,40 @@
 						<br>
 					</div>
 
+					<div class="tab-pane tab-content" id="new">
+						<h2>New <small>Mining Simulator</small></h2>
+						<p>In her we are going to simulate the mechanism of block confirmation inside the Bitcoin blockchain</p>
+					 	<div class="form-group">
+							<label>Timestamp</label>
+							<input id="timestamp_new" type="text" class="form-control" value="Timestamp here" readonly >
+						</div>
+						<div class="form-group">
+							<label>Block #</label>
+							<input id="Block_number_new" type="text" class="form-control" value="Enter block number" >
+						</div>
+						<div class="form-group">
+							<label>Merkle Root</label>
+							<input id="merkle_root_new" type="text" class="form-control" value="Enter Merkle Root">
+						</div>
+						<div class="form-group">
+							<label>Dificulty</label>
+							<input id="dificulty_new" type="text" class="form-control" value="Select difiulty">
+						</div>
+						<div class="form-group">
+							<label>Nonce</label>
+							<input id="nonce_new" type="text" class="form-control" value="Enter nonce">
+						</div>
+
+						<input type="button" class="btn btn-primary col-md-1" value="Try" id="hash_button_new">
+						<br>
+
+						<!--Button Separator-->
+						<br>
+						<label>Block Hash</label>
+						<input id="block_hash_new" type="text" class="form-control" value="Bock Hash here" readonly>
+
+					</div>
+
 					<div class="tab-pane tab-content" id="newSegWit">
 						<h2>New SegWit Address <small> Smaller &amp; Faster Transactions</small></h2>
 
@@ -436,82 +471,82 @@
 						<br>
 					</div>
 
-                    <div class="tab-pane tab-content" id="newTimeLocked">
-                        <h2>New Time Locked Address <small>Coins can be released only after a certain date</small></h2>
+          <div class="tab-pane tab-content" id="newTimeLocked">
+              <h2>New Time Locked Address <small>Coins can be released only after a certain date</small></h2>
 
-                        <div class="row">
+              <div class="row">
 
-                            <div class="col-md-11">
-				<p>Use <i><a href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" target="_blank">OP_CHECKLOCKTIMEVERIFY</a></i> (OP_HODL) to create a time locked address where the funds are unspendable until a set date and time has passed.</p>
-                                <p>Public keys can be <a href="#newAddress">generated in your browser</a> or from your bitcoin client</a>.</p>
-                                <p>Enter the public key that will be able to unlock the funds after the a certain date.
-                            </div>
+                  <div class="col-md-11">
+											<p>Use <i><a href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" target="_blank">OP_CHECKLOCKTIMEVERIFY</a></i> (OP_HODL) to create a time locked address where the funds are unspendable until a set date and time has passed.</p>
+                      <p>Public keys can be <a href="#newAddress">generated in your browser</a> or from your bitcoin client</a>.</p>
+                      <p>Enter the public key that will be able to unlock the funds after the a certain date.
+                  </div>
 
-                            <div class="col-md-1">
-                            </div>
-                        </div>
+                  <div class="col-md-1">
+                  </div>
+              </div>
 
-                        <div class="row">
-                            <div class="form-horizontal">
-                                <div class="col-xs-12">
-                                    <input id="timeLockedPubKey" type="text" class="form-control pubkey">
-                                </div>
-                            </div>
-                        </div>
+              <div class="row">
+                  <div class="form-horizontal">
+                      <div class="col-xs-12">
+                          <input id="timeLockedPubKey" type="text" class="form-control pubkey">
+                      </div>
+                  </div>
+              </div>
 
-                        <p id="timeLockedRbTypeBox">
-                        	Enter the 
-                        		<input type="radio" id="timeLockedRbTypeDate" name="timeLockedRbType" value="date" checked="checked"> 
-                        		<label for="timeLockedRbTypeDate">date and time</label> 
-                        		or                         		
-                        		<input type="radio" id="timeLockedRbTypeBlockHeight" name="timeLockedRbType" value="blockheight">
-                        		<label for="timeLockedRbTypeBlockHeight">blockheight</label>
+              <p id="timeLockedRbTypeBox">
+              	Enter the
+              		<input type="radio" id="timeLockedRbTypeDate" name="timeLockedRbType" value="date" checked="checked">
+              		<label for="timeLockedRbTypeDate">date and time</label>
+              		or
+              		<input type="radio" id="timeLockedRbTypeBlockHeight" name="timeLockedRbType" value="blockheight">
+              		<label for="timeLockedRbTypeBlockHeight">blockheight</label>
 
-                        		required to release the coins: 
-                        </p>
-                        <div class="row">
-                            <div class='col-md-6'>
-                                <div class="form-group">
-                                    <div class='input-group date' id='timeLockedDateTimePicker'>
-                                        <input type='text' class="form-control" placeholder="MM/DD/YYYY hh:mm" />
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                    <div class='input-group hidden' id='timeLockedBlockHeight'>
-                                        <input type='text' id='timeLockedBlockHeightVal' class="form-control" placeholder="Blockheight" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+              		required to release the coins:
+              </p>
+              <div class="row">
+                  <div class='col-md-6'>
+                      <div class="form-group">
+                          <div class='input-group date' id='timeLockedDateTimePicker'>
+                              <input type='text' class="form-control" placeholder="MM/DD/YYYY hh:mm" />
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                          <div class='input-group hidden' id='timeLockedBlockHeight'>
+                              <input type='text' id='timeLockedBlockHeightVal' class="form-control" placeholder="Blockheight" />
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
-                        <br>
+              <br>
 
-                        <div id="timeLockedErrorMsg" class="alert alert-danger" style="display:none;"></div>
+              <div id="timeLockedErrorMsg" class="alert alert-danger" style="display:none;"></div>
 
-                        <div class="alert alert-success hidden" id="timeLockedData">
-                            <label>Address</label>
-                            <p>Payment should be made to this address:</p>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control address" value="" readonly>
-                                        <span class="input-group-btn">
-                                            <button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <label>Redeem Script</label>
-                            <p>This script should be <i>saved and should be shared with all the participants before a payment is made</i>, so they may validate the authenticity of the address, it will also be used later to release the bitcoins.</p>
-                            <textarea class="form-control script" style="height:160px" readonly></textarea>
-                            <label>Shareable URL</label>
-                            <input type="text" class="scriptUrl form-control" readonly>
-                        </div>
+              <div class="alert alert-success hidden" id="timeLockedData">
+                  <label>Address</label>
+                  <p>Payment should be made to this address:</p>
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <div class="input-group">
+                              <input type="text" class="form-control address" value="" readonly>
+                              <span class="input-group-btn">
+                                  <button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                  <label>Redeem Script</label>
+                  <p>This script should be <i>saved and should be shared with all the participants before a payment is made</i>, so they may validate the authenticity of the address, it will also be used later to release the bitcoins.</p>
+                  <textarea class="form-control script" style="height:160px" readonly></textarea>
+                  <label>Shareable URL</label>
+                  <input type="text" class="scriptUrl form-control" readonly>
+              </div>
 
-                        <input type="button" class="btn btn-primary" value="Submit" id="newTimeLockedAddress">
-                        <br>
-                    </div>
+              <input type="button" class="btn btn-primary" value="Submit" id="newTimeLockedAddress">
+              <br>
+          </div>
 
 					<div class="tab-pane tab-content" id="newHDaddress">
 						<h2>New HD Address <small>making bip32 even easier</small></h2>
@@ -535,7 +570,7 @@
 
 						<h3>Address Options</h3>
 						<p>You can use the advanced options below to generate different kinds of master addresses.</p>
-						
+
 						<div class="checkbox">
 							<label><input type="checkbox" id="newHDBrainwallet" class="checkbox-inline"> Custom Seed or Brain Wallet</label>
 							<input type="text" class="form-control hidden" id="HDBrainwallet">
@@ -756,7 +791,7 @@
     								</table>
 								<br>
 							</div>
-	
+
 							<div class="hidden verifyData" id="verifyRsDataSegWit">
 				                               	<label>Segwit Address</label>
    								<div class="row">
@@ -1017,7 +1052,7 @@
 							<p>The above transaction has been signed:</p>
 
                         				<textarea class="form-control script" style="height:160px" readonly></textarea>
-                                    
+
 							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
 						</div>
 
@@ -1040,7 +1075,7 @@
 					<div class="tab-pane tab-content" id="dev">
 						<h2>Development <small>Javascript framework, API and more</small></h2>
 						<div class="alert alert-info">This section is currently under development and is subject to change.</div>
-						
+
 					</div>
 
 					<div class="tab-pane tab-content" id="about">
@@ -1137,7 +1172,7 @@
 								</select>
 							</div>
 						</div>
-							
+
 						<hr>
 
 						<div class="row">
@@ -1163,7 +1198,7 @@
 					</div>
 
 					<br>
-					<p class="text-muted">This page uses javascript to generate your addresses and sign your transactions within your browser, this means we <i>never</i> receive your private keys, this can be independently verified by reviewing the source code on <a href="https://github.com/OutCast3k/coinbin/" target="_blank">github</a>. You can even <a href="https://github.com/OutCast3k/coinbin/archive/master.zip">download</a> this page and host it yourself or run it offline!</p>
+						<p class="text-muted">This page uses javascript to generate your addresses and sign your transactions within your browser, this means we <i>never</i> receive your private keys, this can be independently verified by reviewing the source code on <a href="https://github.com/OutCast3k/coinbin/" target="_blank">github</a>. You can even <a href="https://github.com/OutCast3k/coinbin/archive/master.zip">download</a> this page and host it yourself or run it offline!</p>
 					<br>
 
 				</div>
@@ -1270,9 +1305,9 @@
 						<div class="col-md-5">
 							<label>Mediator:</label>
 
-							<!-- 
-								You need to contact us before adding your pubkey 
-								and submitting a pull request on github. 
+							<!--
+								You need to contact us before adding your pubkey
+								and submitting a pull request on github.
 
 								format is: pubkey;email;fee
 							-->
@@ -1284,12 +1319,12 @@
 
 						<div class="col-md-5">
 							<label>Address:</label> <span class="text-muted">(for disputes)</span>
-							<input id="mediatorEmail" type="text" class="form-control address" value="" readonly>	
+							<input id="mediatorEmail" type="text" class="form-control address" value="" readonly>
 						</div>
 
 						<div class="col-md-2">
-							<label>Fee (%):</label> 
-							<input id="mediatorFee" type="text" class="form-control address" value="" readonly>	
+							<label>Fee (%):</label>
+							<input id="mediatorFee" type="text" class="form-control address" value="" readonly>
 						</div>
 
 					</div>
