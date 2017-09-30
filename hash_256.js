@@ -1,5 +1,5 @@
 var imput_ids = ["#Block_number_new","#merkle_root_new","#dificulty_new","#nonce_new"];
-//var hash_message= ' ';
+var hash_message='';
 
 //Checks if value is a number
 function isNumber(n) {
@@ -17,7 +17,7 @@ function correctHash(hash, dificulty) {
 }
 
 //Concatenates all of the values of the form
-function concatById(imput_ids) {
+function concatById(imput_ids, hash_message) {
   hash_message='';
   for (i = 0; i < imput_ids.length; i++) {
       if(!isNumber($(imput_ids[i]).val())){
@@ -33,11 +33,7 @@ function concatById(imput_ids) {
 
 $(document).ready(function() {
     $("#hash_button_new").click(function(){
-        /*console.log($(imput_ids[0]).val());
-        console.log($(imput_ids[1]).val());
-        console.log($(imput_ids[2]).val());
-        console.log($(imput_ids[3]).val());*/
-        if(concatById(imput_ids /*, hash_message*/)) return;
+        if(concatById(imput_ids,hash_message)) return;
         console.log(hash_message);
         var hash = Crypto.SHA256(String(hash_message));
         console.log(hash);
