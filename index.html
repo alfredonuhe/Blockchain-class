@@ -39,6 +39,7 @@
 		<script type="text/javascript" src="js/coinbin.js"></script>
 
 		<script type="text/javascript" src="hash_256.js"></script>
+		<!-- <script type="text/javascript" src="sse_test.js"></script> -->
 	</head>
 
 	<body>
@@ -324,37 +325,39 @@
 							<h2>New <small>Mining Simulator</small></h2>
 							<p>In her we are going to simulate the mechanism of block confirmation inside the Bitcoin blockchain</p>
 							<div = class= "col-md-6">
-								<div class="row  col-md-12">
-									<label>Timestamp</label>
-									<input id="timestamp_new" type="text" class="form-control" value="Timestamp" readonly >
-								</div>
-								<div class="row  col-md-12">
-									<label>Block #</label>
-									<input id="Block_number_new" type="text" class="form-control" value="Enter value" >
-								</div>
-								<div class="row  col-md-12">
-									<label>Merkle Root</label>
-									<input id="merkle_root_new" type="text" class="form-control" value="Enter value">
-								</div>
-								<div class="row  col-md-12">
-									<label>Dificulty</label>
-									<input id="dificulty_new" type="text" class="form-control" value="Enter value">
-								</div>
-								<div class="row  col-md-12">
-									<label>Nonce</label>
-									<input id="nonce_new" type="text" class="form-control" value="Enter value">
-								</div>
-								<br>
-								<div class="row col-md-12">
-									<input type="button" class=" btn btn-primary" value="Try" id="hash_button_new" margin-top= "30px">
-								</div>
-								<!--Button Separator-->
-								<div class="row col-md-12">
-									<label>Block Hash</label>
-									<input id="block_hash_new" type="text" class="form-control" value="Bock Hash" readonly>
-								</div>
+								<form action="php/session_guest.php" method="post">
+										<div class="row  col-md-12">
+											<label>Timestamp</label>
+											<input id="timestamp_new" name= "timestamp_new" type="text" class="form-control" value="Timestamp" readonly >
+										</div>
+										<div class="row  col-md-12">
+											<label>Block #</label>
+											<input id="Block_number_new" name= "Block_number_new" type="text" class="form-control" value="Enter value" >
+										</div>
+										<div class="row  col-md-12">
+											<label>Merkle Root</label>
+											<input id="merkle_root_new" name= "merkle_root_new" type="text" class="form-control" value="Enter value">
+										</div>
+										<div class="row  col-md-12">
+											<label>Dificulty</label>
+											<input id="dificulty_new" name= "dificulty_new" type="text" class="form-control" value="Enter value">
+										</div>
+										<div class="row  col-md-12">
+											<label>Nonce</label>
+											<input id="nonce_new" name= "nonce_new" type="text" class="form-control" value="Enter value">
+										</div>
+										<br>
+										<div class="row col-md-12">
+											<input type="button" class="btn btn-primary" value="Try" id="hash_button_new" margin-top= "30px">
+										</div>
+										<!--Button Separator-->
+										<div class="row col-md-12">
+											<label>Block Hash</label>
+											<input id="block_hash_new" name= "block_hash_new" type="text" class="form-control" value="Bock Hash" readonly>
+										</div>
+								</form>
 							</div>
-							<div = class= "col-md-6">
+							<div class= "col-md-6" id= "result_test_sse">
 							</div>
 						</div>
 					</div>

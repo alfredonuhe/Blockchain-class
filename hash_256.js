@@ -1,15 +1,27 @@
 /*Use the 3-5-1 combination in order to check mechanism of
 the simulation */
 
+//Defining global variables
 var imput_ids = ["#Block_number_new","#merkle_root_new","#dificulty_new","#nonce_new"];
 var hash_message= '';
+var button_disabled = false;
 
 //Checks if value is a number
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-//Checks for mining result
+// Disables 'Try' button after finding a correct hash
+function disableButton(){
+  button_disabled = true;
+  console.log("disabled");
+  window.setTimeout(function(){
+    console.log("enabled");
+    button_disabled = false;}
+  ,5000);
+}
+
+//Checks if result of hash is a corerct hash
 function correctHash(hash, dificulty) {
     correctHashStyle(false);
     $("#block_hash_new").val(hash);
@@ -19,6 +31,10 @@ function correctHash(hash, dificulty) {
       }
     }
     correctHashStyle(true);
+    disableButton();
+    console.log(hash);
+    console.log(hash_message);
+    post_Hash(hash, hash_message);
     return;
 }
 
@@ -38,32 +54,48 @@ function correctHashStyle(correct){
 //sets new nonce for new search
 function newNonce(){
     var lastNonce = parseInt($("#nonce_new").val()) +1;
-    console.log(lastNonce);
+    //console.log(lastNonce);
     $("#nonce_new").val(lastNonce);
-    console.log($("#nonce_new").val());
+    //console.log($("#nonce_new").val());
 }
 
-//Concatenates all of the values of the form
+/*Concatenates all of the values of the form
+only if all data is providad in the form*/
 function concatById(imput_ids) {
   hash_message='';
   for (i = 0; i < imput_ids.length; i++) {
       if(!isNumber($(imput_ids[i]).val())){
         alert("Enter correct values " + i);
-        return true;
+        return false;
       }
       hash_message = hash_message.concat($(imput_ids[i]).val());
   }
   //console.log(hash_message);
-  return false;
+  return true;
 }
 
+//post funtion to sumbit form data to server
+function post_Hash(hash, hash_message){
+  /*var data = "str="+ hash + hash_message;
+  console.log(data);
+  $.post("php/session_guest.php", data, function(json) {
+      console.log(json.name);
+      console.log(json.time);
+  }, "json");*/
+  $.post("php/session_guest.php",
+        {
+          'myhash': hash,
+          'myhash_message': hash_message
+        });
+}
 
 $(document).ready(function() {
     $("#hash_button_new").click(function(){
-        if(concatById(imput_ids)) return;
-        console.log(hash_message);
+        console.log(button_disabled);
+        if(!concatById(imput_ids) || button_disabled) return;
+        //console.log(hash_message);
         var hash = Crypto.SHA256(String(hash_message));
-        console.log(hash);
+        //console.log(hash);
         newNonce();
         correctHash(hash,$(imput_ids[2]).val());
     });
