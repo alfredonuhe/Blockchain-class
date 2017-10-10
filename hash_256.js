@@ -5,10 +5,19 @@ the simulation */
 var imput_ids = ["#Block_number_new","#merkle_root_new","#dificulty_new","#nonce_new"];
 var hash_message= '';
 var button_disabled = false;
+//var timer = true;
+var info_array = [];
+var new_queue= new Queue();
 
 //Checks if value is a number
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+// Hash info object
+function infoBlock(hash, hash_message) {
+    this.hash= hash;
+    this.hash_message= hash_message;
 }
 
 // Disables 'Try' button after finding a correct hash
@@ -32,6 +41,7 @@ function correctHash(hash, dificulty) {
     }
     correctHashStyle(true);
     disableButton();
+    resfreshPannel(hash, hash_message);
     console.log(hash);
     console.log(hash_message);
     post_Hash(hash, hash_message);
@@ -54,13 +64,11 @@ function correctHashStyle(correct){
 //sets new nonce for new search
 function newNonce(){
     var lastNonce = parseInt($("#nonce_new").val()) +1;
-    //console.log(lastNonce);
     $("#nonce_new").val(lastNonce);
-    //console.log($("#nonce_new").val());
 }
 
-/*Concatenates all of the values of the form
-only if all data is providad in the form*/
+//Concatenates all of the values of the form
+//only if all data is providad in the form
 function concatById(imput_ids) {
   hash_message='';
   for (i = 0; i < imput_ids.length; i++) {
@@ -76,12 +84,6 @@ function concatById(imput_ids) {
 
 //post funtion to sumbit form data to server
 function post_Hash(hash, hash_message){
-  /*var data = "str="+ hash + hash_message;
-  console.log(data);
-  $.post("php/session_guest.php", data, function(json) {
-      console.log(json.name);
-      console.log(json.time);
-  }, "json");*/
   $.post("php/session_guest.php",
         {
           'myhash': hash,
@@ -89,13 +91,132 @@ function post_Hash(hash, hash_message){
         });
 }
 
+//shift left array
+function shiftLeft(array){
+  for (var i = 0; i < array.length-1; i++) {
+    array[i+1]=array[i]
+  }
+  array[0]= undefined;
+}
+
+//check if array is full
+function isFull(array){
+  for (var i = 0; i < array.length; i++) {
+    if (array[i]==undefined) {
+      return false;
+    }
+  }
+  return true;
+}
+
+//fill in empty spot
+function fillFirst(array, value){
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] == 'undefined') {
+      array[i]= value;
+      return true;
+    }
+  }
+  return false;
+}
+
+//test hiding and showing hash text areas
+function resfreshPannel(hash, hash_message){
+  var infoBlock_aux = new infoBlock(hash, hash_message);
+  var dinamic_board = document.getElementsByClassName("dinamic_board");
+  if (new_queue.size() == 5) {
+    new_queue.dequeue();
+    new_queue.enqueue(infoBlock_aux);
+  }else {
+    new_queue.enqueue(infoBlock_aux);
+  }
+  for (var i = 0; i < dinamic_board.length; i++) {
+    if (i<new_queue.size()) {
+      dinamic_board[i].style.display = "";
+      dinamic_board[i].value = new_queue._storage[i].hash
+    }else {
+      dinamic_board[i].style.display = "none";
+    }
+
+  }
+
+/*
+  console.log("here");
+  console.log("here: " + dinamic_board[0].style.display);
+  var dinamic_board = document.getElementsByClassName("dinamic_board");
+  var time= 1000;
+    for (var i = 0; i < 1; i++) {
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[0].style.display = "none";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[1].style.display = "none";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[2].style.display = "none";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[3].style.display = "none";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[4].style.display = "none";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[5].style.display = "none";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      //oposite
+      setInterval(function(){
+          dinamic_board[0].style.display = "";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[1].style.display = "";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[2].style.display = "";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[3].style.display = "";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[4].style.display = "";
+      }, time);
+      time= time +1000;
+      console.log(time);
+      setInterval(function(){
+          dinamic_board[5].style.display = "";
+      }, time);
+      time= time +1000;
+      console.log(time);
+    }*/
+}
+
 $(document).ready(function() {
+
     $("#hash_button_new").click(function(){
         console.log(button_disabled);
         if(!concatById(imput_ids) || button_disabled) return;
-        //console.log(hash_message);
         var hash = Crypto.SHA256(String(hash_message));
-        //console.log(hash);
         newNonce();
         correctHash(hash,$(imput_ids[2]).val());
     });
