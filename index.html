@@ -327,44 +327,53 @@
 							<p>In here we are going to simulate the Bitcoin block confirmation mechanism</p>
 							<div = class= "col-md-6">
 								<form action="php/session_guest.php" method="post">
-										<div class="row  col-md-12">
-											<label>Timestamp</label>
-											<input id="timestamp_new" name= "timestamp_new" type="text" class="form-control" value="Timestamp" readonly >
+										<div class="row">
+											<label>Version</label>
+											<input id="version_new" name= "version_new" type="text" class="col form-control">
 										</div>
-										<div class="row  col-md-12">
+										<div class="row">
 											<label>Block #</label>
-											<input id="Block_number_new" name= "Block_number_new" type="text" class="form-control" value="Enter value" >
+											<input id="block_number_new" name= "block_number_new" type="text" class="col form-control">
 										</div>
-										<div class="row  col-md-12">
-											<label>Merkle Root</label>
-											<input id="merkle_root_new" name= "merkle_root_new" type="text" class="form-control" value="Enter value">
+										<div class="row">
+											<label>Previous block Hash</label>
+											<input id="prev_block_new" name= "prev_block_new" type="text" class="col form-control">
 										</div>
-										<div class="row  col-md-12">
+										<div class="row">
 											<label>Dificulty</label>
-											<input id="dificulty_new" name= "dificulty_new" type="text" class="form-control" value="Enter value">
+											<input id="dificulty_new" name= "dificulty_new" type="text" class="col form-control">
 										</div>
-										<div class="row  col-md-12">
+										<label>Timestamp</label>
+										<div class="row">
+											<input id="timestamp_new" name= "timestamp_new" type="text" class="col form-control">
+										</div>
+										<label>Merkle Root</label>
+										<div class="row input-group">
+											<input id="merkle_root_new" name= "merkle_root_new" type="text" class="form-control">
+											<span class="input-group-btn">
+												<button id="random_hash_new" class="btn btn-default" type="button">New</button>
+											</span>
+											<!--<input type="button" class="btn btn-primary" value="New merkle" id="merkle_button_new" margin-top= "30px"> -->
+										</div>
+										<div class="row">
 											<label>Nonce</label>
-											<input id="nonce_new" name= "nonce_new" type="text" class="form-control" value="Enter value">
-										</div>
-										<br>
-										<div class="row col-md-12">
-											<input type="button" class="btn btn-primary" value="Try" id="hash_button_new" margin-top= "30px">
+											<input id="nonce_new" name= "nonce_new" type="text" class="col form-control">
 										</div>
 										<!--Button Separator-->
-										<div class="row col-md-12">
+										<div class="row">
+											<input type="button" class=" col-md-2 btn btn-primary" value="Try" id="hash_button_new" margin-top= "30px">
+										</div>
+										<div class="row">
 											<label>Block Hash</label>
-											<input id="block_hash_new" name= "block_hash_new" type="text" class="form-control" value="Bock Hash" readonly>
+											<input id="block_hash_new" name= "block_hash_new" type="text" class="col-2 form-control" readonly>
 										</div>
 								</form>
 							</div>
 							<div class= "col-md-6" id= "result_test_sse">
-								<textarea class="form-control dinamic_board" readonly style="resize: none;" rows = 3></textarea>
-								<textarea class="form-control dinamic_board" readonly style="resize: none;" rows = 3></textarea>
-								<textarea class="form-control dinamic_board" readonly style="resize: none;" rows = 3></textarea>
-								<textarea class="form-control dinamic_board" readonly style="resize: none;" rows = 3></textarea>
-								<textarea class="form-control dinamic_board" readonly style="resize: none;" rows = 3></textarea>
-								<textarea class="form-control dinamic_board" readonly style="resize: none;" rows = 3></textarea>
+								<div class= "row">
+								</div>
+								<textarea id="dinamic_board_hidden" class ="form-control" readonly style="resize: none; visibility: hidden;" rows = 1></textarea>
+								<textarea id="dinamic_board_alfredo" class ="form-control" readonly style="resize: none;" rows = 16></textarea>
 							</div>
 						</div>
 					</div>
