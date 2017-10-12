@@ -54,7 +54,6 @@ function correctHash(hash, dificulty) {
           return;
       }
     }
-    $("#prev_block_new").val(hash);
     correctHashStyle(true);
     disableButton();
     refreshPannel(hash, hash_message);
@@ -115,7 +114,8 @@ function randomHash(){
 function refreshPannel(hash, hash_message){
   //eliminar
   var infoBlock_aux = new infoBlock(hash, hash_message);
-  $("#dinamic_board_alfredo").val("BLOCK HASH: " + hash + "\n" + "BLOCK HEADER: " + hash_message + "\n\n");
+  $("#dinamic_board_alfredo").val("BLOCK #: " + input_data[1].value + "\n\n" +
+      "BLOCK HASH: " + hash + "\n\n" + "BLOCK HEADER: " + hash_message + "\n\n");
   var new_data;
   for (var i = 0; i < input_data.length; i++) {
     new_data = input_data[i].name.toUpperCase() + ": " + input_data[i].value + "\n";

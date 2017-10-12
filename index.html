@@ -329,25 +329,37 @@
 								<form action="php/session_guest.php" method="post">
 										<div class="row">
 											<label>Version</label>
+										</div>
+										<div class="row">
 											<input id="version_new" name= "version_new" type="text" class="col form-control">
 										</div>
 										<div class="row">
 											<label>Block #</label>
+										</div>
+										<div class="row">
 											<input id="block_number_new" name= "block_number_new" type="text" class="col form-control">
 										</div>
 										<div class="row">
 											<label>Previous block Hash</label>
+										</div>
+										<div class="row">
 											<input id="prev_block_new" name= "prev_block_new" type="text" class="col form-control">
 										</div>
 										<div class="row">
 											<label>Dificulty</label>
+										</div>
+										<div class="row">
 											<input id="dificulty_new" name= "dificulty_new" type="text" class="col form-control">
 										</div>
-										<label>Timestamp</label>
+										<div class="row">
+											<label>Timestamp</label>
+										</div>
 										<div class="row">
 											<input id="timestamp_new" name= "timestamp_new" type="text" class="col form-control">
 										</div>
-										<label>Merkle Root</label>
+										<div class="row">
+											<label>Merkle Root</label>
+										</div>
 										<div class="row input-group">
 											<input id="merkle_root_new" name= "merkle_root_new" type="text" class="form-control">
 											<span class="input-group-btn">
@@ -356,15 +368,18 @@
 											<!--<input type="button" class="btn btn-primary" value="New merkle" id="merkle_button_new" margin-top= "30px"> -->
 										</div>
 										<div class="row">
-											<label>Nonce</label>
-											<input id="nonce_new" name= "nonce_new" type="text" class="col form-control">
+												<label>Nonce</label>
 										</div>
-										<!--Button Separator-->
 										<div class="row">
-											<input type="button" class=" col-md-2 btn btn-primary" value="Try" id="hash_button_new" margin-top= "30px">
+											<div class="form-group">
+													<input id="nonce_new" name= "nonce_new" type="text" class="col form-control">
+											</div>
+											<button id="hash_button_new" class="col-md-2 btn btn-primary" type="button">Try</button>
 										</div>
 										<div class="row">
 											<label>Block Hash</label>
+										</div>
+										<div class="row">
 											<input id="block_hash_new" name= "block_hash_new" type="text" class="col-2 form-control" readonly>
 										</div>
 								</form>
@@ -373,7 +388,7 @@
 								<div class= "row">
 								</div>
 								<textarea id="dinamic_board_hidden" class ="form-control" readonly style="resize: none; visibility: hidden;" rows = 1></textarea>
-								<textarea id="dinamic_board_alfredo" class ="form-control" readonly style="resize: none;" rows = 16></textarea>
+								<textarea id="dinamic_board_alfredo" class ="form-control" readonly style="resize: none;" rows = 20></textarea>
 							</div>
 						</div>
 					</div>
