@@ -1,10 +1,21 @@
-<?php header('Content-type: text/html; charset=utf-8');?>
+<?php
+header('Content-type: text/html; charset=utf-8');
+include "utilities.php";
+include "queue.php";
 
-<html>
-<body>
+storeUserIP(false);
+$queue_size = 10;
+$block_aux = new Blockinfo($_POST['version_new'],$_POST['prev_block_new'],$_POST['dificulty_new'],
+$_POST['timestamp_new'],$_POST['merkle_root_new'],$_POST['nonce_new'],$_POST['block_hash_new']);
 
-bla bla hash: <?php echo $_POST['myhash']; ?><br>
-hash_message: <?php echo $_POST['myhash_message']; ?>
+$Blockarray= unserialize(file_get_contents("data.bin"));
+isValidBlock($Blockarray, $block_aux);
 
-</body>
-</html>
+if ($Blockarray->size() >= $queue_size) {
+  $Blockarray->dequeue();
+  $Blockarray->enqueue($block_aux);
+}else{
+  $Blockarray->enqueue($block_aux);
+}
+file_put_contents('data.bin', serialize($Blockarray));
+?>
