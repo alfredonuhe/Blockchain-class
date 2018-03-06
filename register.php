@@ -30,7 +30,7 @@
 				<p> Hola </p>
 			</div>
       <div class = "row">
-          <form class="col-md-3 col-md-offset-5 form-box" action = "login_action.php" method="post">
+          <form class="col-md-3 col-md-offset-5 form-box" action = "register_action.php" method="post">
             <div class="form-group">
               <label for="formGroupExampleInput">Session Name</label>
               <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="session name">
