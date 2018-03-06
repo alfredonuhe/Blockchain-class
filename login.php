@@ -4,7 +4,7 @@
 
 		<title>Bitcoin Wallet by Coinb.in</title>
 
-        	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 		<meta name="keywords" content="bitcoin, wallet, multisig, multisignature, address, browser, segwit, javascript, js, broadcast, transaction, verify, decode" />
 		<meta name="description" content="A Bitcoin Wallet written in Javascript. Supports Multisig, SegWit, Custom Transactions, nLockTime and more!" />
 
@@ -30,15 +30,16 @@
 				<p> Hola </p>
 			</div>
       <div class = "row">
-          <form class="col-md-3 col-md-offset-5 form-box">
+          <form class="col-md-3 col-md-offset-5 form-box" action = "action_page.php" method="post">
             <div class="form-group">
               <label for="formGroupExampleInput">Session Name</label>
-              <input type="text" class="form-control" id="sesion-name" placeholder="session name">
+              <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="session name">
             </div>
             <div class="form-group">
               <label for="formGroupExampleInput2">Session Password</label>
-              <input type="text" class="form-control" id="session-password" placeholder="session password">
-							<button type="button" class="btn btn-default">Crear</button>
+              <input type="text" class="form-control" name= "session-password" id="session-password" placeholder="session password">
+							<button type="submit" class="btn btn-default">Crear</button>
+							<?php if(!empty($msg)) echo $msg; ?> <!-- Display error message if any -->
 						</div>
           </form>
       </div>
