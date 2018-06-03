@@ -1,0 +1,4 @@
+#!/bin/bash
+
+`rm -rf /opt/lampp/htdocs/bitcoin-simulator/*`
+`cp -R ./* /opt/lampp/htdocs/bitcoin-simulator/`
