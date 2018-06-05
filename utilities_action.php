@@ -11,9 +11,9 @@ class SessionData
         $this->passwordHash = $passwordHash;
     }
 
-    function toString ()
+    function toString()
     {
-        return "Session Name: ".$this->sessionName."; Session password hash: ".$this->passwordHash;
+        return "Session Name: " . $this->sessionName . "; Session password hash: " . $this->passwordHash;
     }
 }
 
@@ -26,7 +26,7 @@ class MyDB extends SQLite3
 }
 
 
-function registerUser()
+function sessionDirectory()
 {
     /*
     *LINUX CODE
@@ -71,6 +71,32 @@ function registerUser()
     }
 }
 
+function registerUser()
+{
+    $msg = '';
+    $sessionName = strtolower($_POST["session-name"]);
+    $sessionPassword = strtolower($_POST["session-password"]);
+    $sessionPasswordHash = hash("sha256", $sessionPassword);
+
+    if (empty($sessionPassword) || empty($sessionName)) {
+        $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
+        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+        die;
+    }
+
+    $sessionQuery = lookupSessionData($sessionName);
+    echo "Name: ".$sessionQuery->sessionName.", Hash: ".$sessionQuery->passwordHash;
+
+    //TODO: look if this if condition is correctly defined for thus function
+
+    if (empty($sessionQuery->sessionName) || empty($sessionQuery->passwordHash)
+        || strcmp($sessionPasswordHash, $sessionQuery->passwordHash) != 0) {
+        $msg = '<br/>Error. Incorrect session name or password.';   //assign an error message
+        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+        die;
+    }
+}
+
 function loginUser()
 {
     $msg = '';
@@ -78,7 +104,7 @@ function loginUser()
     $sessionPassword = strtolower($_POST["session-password"]);
     $sessionPasswordHash = hash("sha256", $sessionPassword);
 
-    if (empty($sessionPassword) || empty($sessionName)){
+    if (empty($sessionPassword) || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
         include('login.php');  //include the html code(ie. to display the login form and other html tags)
         die;
@@ -87,12 +113,12 @@ function loginUser()
     $sessionQuery = lookupSessionData($sessionName);
 
     if (empty($sessionQuery->sessionName) || empty($sessionQuery->passwordHash)
-        || strcmp($sessionPasswordHash, $sessionQuery->passwordHash) != 0){
+        || strcmp($sessionPasswordHash, $sessionQuery->passwordHash) != 0) {
         $msg = '<br/>Error. Incorrect session name or password.';   //assign an error message
         include('login.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
-
+    //TODO: follow with fowarding to session directory
     echo "<br/>Success.";
 
 }
@@ -110,9 +136,9 @@ function lookupSessionData($sessionName)
 {
     $db = new MyDB();
 
-    $result = $db->query("SELECT passwordHash FROM sessions WHERE name='". $sessionName."';");
-    $sessionPasswordHash = $result->fetchArray()[0];
-    $sessionData = new SessionData($sessionName, $sessionPasswordHash);
+    $result = $db->query("SELECT * FROM sessions WHERE name='" . $sessionName . "';");
+    $resultsArray = $result->fetchArray();
+    $sessionData = new SessionData($resultsArray[1], $resultsArray[2]);
     $db->close();
     return $sessionData;
 }

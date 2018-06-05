@@ -38,7 +38,7 @@
             <div class="form-group">
               <label for="formGroupExampleInput2">Session Password</label>
               <input type="text" class="form-control" name= "session-password" id="session-password" placeholder="session password">
-							<button type="submit" class="btn btn-default">Crear</button>
+							<button type="submit" class="btn btn-default">Login</button>
 							<?php if(!empty($msg)) echo $msg; ?> <!-- Display error message if any -->
 						</div>
           </form>
