@@ -1,13 +1,30 @@
 <?php
 
-class SessionData{
-  public $password_hash;
-  public $session_name;
-  function __construct($SEssion_name, $PAssword_hash){
-    $this->session_name = $SEssion_name;
-    $this->password_hash = $PAssword_hash;
-  }
+class SessionData
+{
+    public $passwordHash;
+    public $sessionName;
+
+    function __construct($sessionName, $passwordHash)
+    {
+        $this->sessionName = $sessionName;
+        $this->passwordHash = $passwordHash;
+    }
+
+    function toString ()
+    {
+        return "Session Name: ".$this->sessionName."; Session password hash: ".$this->passwordHash;
+    }
 }
+
+class MyDB extends SQLite3
+{
+    function __construct()
+    {
+        $this->open('mydb.sq3');
+    }
+}
+
 
 function registerUser()
 {
@@ -54,16 +71,62 @@ function registerUser()
     }
 }
 
-function saveSessionData($sessionData, $destination){
-  $sessionData->password_hash = password_hash($sessionData->password_hash, PASSWORD_DEFAULT);
-  file_put_contents("{$destination}/session_data.txt", serialize($sessionData));
+function loginUser()
+{
+    $msg = '';
+    $sessionName = strtolower($_POST["session-name"]);
+    $sessionPassword = strtolower($_POST["session-password"]);
+    $sessionPasswordHash = hash("sha256", $sessionPassword);
+
+    if (empty($sessionPassword) || empty($sessionName)){
+        $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
+        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+        die;
+    }
+
+    $sessionQuery = lookupSessionData($sessionName);
+
+    if (empty($sessionQuery->sessionName) || empty($sessionQuery->passwordHash)
+        || strcmp($sessionPasswordHash, $sessionQuery->passwordHash) != 0){
+        $msg = '<br/>Error. Incorrect session name or password.';   //assign an error message
+        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+        die;
+    }
+
+    echo "<br/>Success.";
+
 }
 
-function requestSessionData($destination){
-  $sessionData = unserialize(file_get_contents("{$destination}/session_data.txt"));
-  return $sessionData;
+function saveSessionData($sessionName, $sessionPassword)
+{
+    $db = new MyDB();
+
+    echo "INSERT INTO sessions(name, passwordHash) VALUES ('" . $sessionName . "', '" . $sessionPassword . "');";
+    $db->query("INSERT INTO sessions(name, passwordHash) VALUES ('" . $sessionName . "', '" . $sessionPassword . "');");
+    $db->close();
 }
 
+function lookupSessionData($sessionName)
+{
+    $db = new MyDB();
+
+    $result = $db->query("SELECT passwordHash FROM sessions WHERE name='". $sessionName."';");
+    $sessionPasswordHash = $result->fetchArray()[0];
+    $sessionData = new SessionData($sessionName, $sessionPasswordHash);
+    $db->close();
+    return $sessionData;
+}
+
+/**
+ *  CREATE TABLE sessions (id INTEGER PRIMARY KEY, name TEXT, passwordHash TEXT);
+ * INSERT INTO sessions(name, passwordHash) VALUES ('myses', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b');
+ * INSERT INTO sessions(name, passwordHash) VALUES ('myses1', 'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35');
+ * INSERT INTO sessions(name, passwordHash) VALUES ('myses2', '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce');
+ * INSERT INTO sessions(name, passwordHash) VALUES ('myses2', '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a');
+ * SELECT * FROM sessions;
+ *
+ * INSERT INTO sessions(name, passwordHash) VALUES ('myses', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b'), ('myses1', 'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35'), ('myses2', '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce'), ('myses2', '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a');
+ **/
 
 /*
 *WIDOWS CODE ------------------------------------------------------------------------------
