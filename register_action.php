@@ -1,4 +1,11 @@
 <?php
+
 include('utilities_action.php');
-registerUser();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    registerUser();
+} else {
+    include('register.php');
+}
+
 ?>

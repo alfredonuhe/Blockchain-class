@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class SessionData. Class to store the manage the data stored in the
+ * database.
+ */
 class SessionData
 {
     public $passwordHash;
@@ -17,6 +21,9 @@ class SessionData
     }
 }
 
+/**
+ * Class MyDB. Class to connect with server's SQLite database.
+ */
 class MyDB extends SQLite3
 {
     function __construct()
@@ -25,8 +32,12 @@ class MyDB extends SQLite3
     }
 }
 
-
-function sessionDirectory()
+/**
+ * This function creates a session in the server filesystem using the sample
+ * session and the session name introduced by the user.
+ * @param $sessionName the session name registered by the user in lowercase.
+ */
+function createSessionDirectory($sessionName)
 {
     /*
     *LINUX CODE
@@ -36,48 +47,43 @@ function sessionDirectory()
     /*
     * Checks whether the user is submitting a form
     */
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $dest = "./session_" . $_POST["session-name"];
-        $src = "./sample/*";
-        $sessionData = new SessionData($_POST["session-name"], $_POST["session-password"]);
-        //validate the POST variables submitted (ie. username and password)
+    $dest = "./session_$sessionName";
+    $src = "./sample/*";
 
-        //check the database for a match
-        if (file_exists($dest)) {
-            $msg = 'Error. Session with specified name already exists.';   //assign an error message
-            include('login.php');  //include the html code(ie. to display the login form and other html tags)
-            die;
-        } elseif (!mkdir($dest)) {
-            $msg = 'Error. Could not create session.';   //assign an error message
-            include('login.php');  //include the html code(ie. to display the login form and other html tags)
-            die;
-        } else {
-            //copy sentence depending on running OS
-            exec("cp -r $src $dest 2>&1", $output);
-            if ($output[0] != NULL) {
-                $msg = 'Error. Could not prepare session files.';   //assign an error message
-                include('login.php');  //include the html code(ie. to display the login form and other html tags)
-                die;
-            } else {
-                //$password = $_POST["password"];
-                //copy sentence depending on running OS
-                saveSessionData($sessionData, $dest);
-                header("Location: {$dest}/index_m.html#mining");
-                die;
-            }
-        }
+    //check filesystem for a match
+    if (file_exists($dest)) {
+        $msg = 'Error. Session with specified name already exists.';   //assign an error message
+        include('register.php');  //include the html code(ie. to display the login form and other html tags)
+        die;
+    } elseif (!mkdir($dest)) {
+        $msg = 'Error. Could not create session.';   //assign an error message
+        include('register.php');  //include the html code(ie. to display the login form and other html tags)
+        die;
     } else {
-        include('login.php');
+        //copy sentence depending on running OS
+        exec("cp -r $src $dest 2>&1", $output);
+        if ($output[0] != NULL) {
+            $msg = 'Error. Could not prepare session files.';   //assign an error message
+            include('register.php');  //include the html code(ie. to display the login form and other html tags)
+            die;
+        }
     }
 }
 
+/**
+ * Function to register in the system a new session. It uses the session name
+ * to verify it doesn't exist already in the database. If it already exists
+ * it exits with an error message. If it doesn't exist already it creates a new
+ * session and redirects the user to the created session. Also, session name
+ * and password are stored in the database. Password is stored as a hash.
+ */
 function registerUser()
 {
     $msg = '';
     $sessionName = strtolower($_POST["session-name"]);
     $sessionPassword = strtolower($_POST["session-password"]);
     $sessionPasswordHash = hash("sha256", $sessionPassword);
-
+    $path = "./session_$sessionName/index_m.html#mining";
 
     if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
@@ -87,26 +93,32 @@ function registerUser()
 
     $sessionQuery = lookupSessionData($sessionName);
 
-    //TODO: look if this if condition is correctly defined for thus function
-
     if (!empty($sessionQuery->sessionName) || !empty($sessionQuery->passwordHash) ) {
         $msg = '<br/>Error. This session already exists.';   //assign an error message
         include('register.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 
-    //TODO: follow with creation of session directory
-    echo "Entered name: ".$sessionName.", Entered Password: ".$sessionPassword;
-    echo "<br/>Name: ".$sessionQuery->sessionName.", Hash: ".$sessionQuery->passwordHash;
-    echo "<br/>Success.";
+    /*Success...*/
+    createSessionDirectory($sessionName);
+    saveSessionData($sessionName,$sessionPasswordHash);
+    header("Location: $path");
 }
 
+/**
+ * Function to login into an existing session. It checks if the session exists
+ * already and if the password is correct. If the session exists it redirects
+ * the user to the existing session. If the session doesn't exist, it returns
+ * an error message. If the password isn't correct it also returns an error
+ * message.
+ */
 function loginUser()
 {
     $msg = '';
     $sessionName = strtolower($_POST["session-name"]);
     $sessionPassword = strtolower($_POST["session-password"]);
     $sessionPasswordHash = hash("sha256", $sessionPassword);
+    $path = "./session_$sessionName/index_m.html#mining";
 
     if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
@@ -122,25 +134,40 @@ function loginUser()
         include('login.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
-    //TODO: follow with fowarding to session directory
-    echo "<br/>Success.";
+
+    /*Success...*/
+    header("Location: $path");
+    die;
 
 }
 
-function saveSessionData($sessionName, $sessionPassword)
+/**
+ * This function stores a session name and its password's hash in the
+ * database. An auto-generated id is also stored automatically.
+ * @param $sessionName session name registered by user.
+ * @param $sessionPasswordHash password hash of session.
+ */
+function saveSessionData($sessionName, $sessionPasswordHash)
 {
     $db = new MyDB();
 
-    echo "INSERT INTO sessions(name, passwordHash) VALUES ('" . $sessionName . "', '" . $sessionPassword . "');";
-    $db->query("INSERT INTO sessions(name, passwordHash) VALUES ('" . $sessionName . "', '" . $sessionPassword . "');");
+    $db->exec("INSERT INTO sessions(name, passwordHash) VALUES ('$sessionName', '$sessionPasswordHash');");
     $db->close();
 }
 
+/**
+ * This function searches into a database the sessions with the
+ * specified session name. It returns all the matching sessions
+ * and its password's hashes.
+ * @param $sessionName session name to search in database.
+ * @return SessionData sessionData object returned containing all
+ * matching session names and its password's hashes.
+ */
 function lookupSessionData($sessionName)
 {
     $db = new MyDB();
 
-    $result = $db->query("SELECT * FROM sessions WHERE name='" . $sessionName . "';");
+    $result = $db->query("SELECT * FROM sessions WHERE name='$sessionName';");
     $resultsArray = $result->fetchArray();
     $sessionData = new SessionData($resultsArray[1], $resultsArray[2]);
     $db->close();
@@ -148,6 +175,8 @@ function lookupSessionData($sessionName)
 }
 
 /**
+ * Queries used to manipulate the SQLite database:
+ *
  *  CREATE TABLE sessions (id INTEGER PRIMARY KEY, name TEXT, passwordHash TEXT);
  * INSERT INTO sessions(name, passwordHash) VALUES ('myses', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b');
  * INSERT INTO sessions(name, passwordHash) VALUES ('myses1', 'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35');
