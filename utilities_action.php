@@ -78,23 +78,27 @@ function registerUser()
     $sessionPassword = strtolower($_POST["session-password"]);
     $sessionPasswordHash = hash("sha256", $sessionPassword);
 
-    if (empty($sessionPassword) || empty($sessionName)) {
+
+    if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
-        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+        include('register.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 
     $sessionQuery = lookupSessionData($sessionName);
-    echo "Name: ".$sessionQuery->sessionName.", Hash: ".$sessionQuery->passwordHash;
 
     //TODO: look if this if condition is correctly defined for thus function
 
-    if (empty($sessionQuery->sessionName) || empty($sessionQuery->passwordHash)
-        || strcmp($sessionPasswordHash, $sessionQuery->passwordHash) != 0) {
-        $msg = '<br/>Error. Incorrect session name or password.';   //assign an error message
-        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+    if (!empty($sessionQuery->sessionName) || !empty($sessionQuery->passwordHash) ) {
+        $msg = '<br/>Error. This session already exists.';   //assign an error message
+        include('register.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
+
+    //TODO: follow with creation of session directory
+    echo "Entered name: ".$sessionName.", Entered Password: ".$sessionPassword;
+    echo "<br/>Name: ".$sessionQuery->sessionName.", Hash: ".$sessionQuery->passwordHash;
+    echo "<br/>Success.";
 }
 
 function loginUser()
@@ -104,7 +108,7 @@ function loginUser()
     $sessionPassword = strtolower($_POST["session-password"]);
     $sessionPasswordHash = hash("sha256", $sessionPassword);
 
-    if (empty($sessionPassword) || empty($sessionName)) {
+    if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
         include('login.php');  //include the html code(ie. to display the login form and other html tags)
         die;
@@ -148,7 +152,7 @@ function lookupSessionData($sessionName)
  * INSERT INTO sessions(name, passwordHash) VALUES ('myses', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b');
  * INSERT INTO sessions(name, passwordHash) VALUES ('myses1', 'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35');
  * INSERT INTO sessions(name, passwordHash) VALUES ('myses2', '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce');
- * INSERT INTO sessions(name, passwordHash) VALUES ('myses2', '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a');
+ * INSERT INTO sessions(name, passwordHash) VALUES ('myses3', '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a');
  * SELECT * FROM sessions;
  *
  * INSERT INTO sessions(name, passwordHash) VALUES ('myses', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b'), ('myses1', 'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35'), ('myses2', '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce'), ('myses2', '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a');
