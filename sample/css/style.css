@@ -36,3 +36,12 @@ body {
         text-overflow: ellipsis;
         display: block;
 }
+
+.pannel {
+	margin-top:2.2%;
+	margin-left: 2%;
+}
+
+.result_test_sse {
+	margin-top:2.2%;
+}
