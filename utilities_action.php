@@ -197,6 +197,17 @@ function deleteDir($path)
 }
 
 /**
+ * This Method deletes the session name form the database and removes files from server.
+ * @param $sessionName session to delete.
+ */
+function deleteSession($sessionName)
+{
+    if ($sessionName == "") return;
+    $db = new MyDB();
+    $db->exec("DELETE FROM sessions WHERE name = '$sessionName';");
+    $db->close();
+}
+/**
  * Queries used to manipulate the SQLite database:
  *
  *  CREATE TABLE sessions (id INTEGER PRIMARY KEY, name TEXT, passwordHash TEXT);

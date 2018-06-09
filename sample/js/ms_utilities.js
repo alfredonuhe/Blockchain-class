@@ -240,15 +240,13 @@ function showData(index){
 }
 
 //Logout by deleting the session files and its presence from the database
-//TODO: redirect user to home site
 function logout(){
+    var sessionName = window.location.pathname.split( '/' )[3].substring(8);
     $.ajax({
-        url: "php/logout.php",
+        url: "../logout.php",
         type: "POST",
-        data: "",
-        complete: function(){
-            console.log("Ajax_success");
-            window.location = "http://localhost/projects/blockchain-class/index.html"
+        data: {
+            name: sessionName
         },
         success: function(){
             console.log("Ajax_success");
