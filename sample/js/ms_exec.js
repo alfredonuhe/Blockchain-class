@@ -19,8 +19,11 @@ $(document).ready(function() {
       hideTextArea(true);
     });
     $(".dinamic_board_btn").click(function(){
-      var index = $(this).parent().parent().index();
+      var index = $(this).parent().parent().parent().index();
       showData(index);
       hideTextArea(false);
+    });
+    $("#logout-button").click(function(){
+        logout();
     });
 });

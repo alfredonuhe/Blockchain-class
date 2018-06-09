@@ -106,7 +106,7 @@ function postForm(){
   });
 }
 
-//incorrect or correct block style
+//Incorrect or correct block style
 function blockStyle(correct, i){
   if (correct) {
     $(".dinamic_board input:eq(" + i + ")")
@@ -237,4 +237,20 @@ function showData(index){
     new_data = input_data[i].name.toUpperCase() + ": " + frontalPadding(object_values[i+1], input_data[i].allowed_length)  + "\n";
     text_area.val(text_area.val() + new_data);
   }
+}
+
+//Logout by deleting the session files and its presence from the database
+//TODO: redirect user to home site
+function logout(){
+    $.ajax({
+        url: "php/logout.php",
+        type: "POST",
+        data: "",
+        success: function(result){
+            //window.location = "https://www.example.com"
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("Ajax_error");
+        }
+    });
 }

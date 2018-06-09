@@ -85,14 +85,8 @@ function sseHandler() {
       var source = new EventSource("php/sse_test.php");
       source.onmessage = function(event) {
         var eventData = JSON.parse(event.data);
-        /*revisar
-        console.log(eventData);
-        console.log(new_queue._storage[0]);
-        console.log(eventData.storage[0]);*/
         if (JSON.stringify(new_queue._storage[0]) == JSON.stringify(eventData.storage[0])) return;
-        // revisar console.log("beep");
         updateQueue(eventData);
-        // revisar setBlockStyles();
         newBlockStyle(true);
         window.setTimeout(function(){setBlockStyles();}, 4000);
         refreshPannelQ(new_queue);
