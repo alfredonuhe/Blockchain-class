@@ -37,11 +37,19 @@ body {
         display: block;
 }
 
-.pannel {
-	margin-top:2.2%;
+#result_test_sse {
+	margin-top:3.8%;
+	margin-left: 2%;
+}
+
+#form-pannel {
 	margin-left: 2%;
 }
 
 .result_test_sse {
-	margin-top:2.2%;
+	margin-top:10%;
+}
+
+#prev-hash {
+	margin-bottom:15px;
 }

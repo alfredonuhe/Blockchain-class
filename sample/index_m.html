@@ -77,25 +77,13 @@
 				<div class="tab-content">
 					<div class="tab-pane active" id="home">
 						<div class= "row">
-							<div class= "col-md-5">
+							<div id= "form-pannel" class= "col-md-5">
 								<div class="row">
 									<h2>Mining Simulator</h2>
 								</div>
 								<div class="row">
 									<p>By alfredonuhe.</p>
 								</div>
-							</div>
-							<div class= "col-md-6 pannel">
-								<div class="row">
-									<label>Previous Valid Hash</label>
-								</div>
-								<div class="row">
-									<input id="prev_hash" name= "prev_hash" type="text" class="col form-control" readonly>
-								</div>
-							</div>
-						</div>
-						<div class= "row">
-							<div class= "col-md-5">
 								<form id="form_ms" action="php/session_guest.php" method="post">
 										<div class="row">
 											<label>Version</label>
@@ -148,7 +136,15 @@
 										</div>
 								</form>
 							</div>
-							<div class= "col-md-6 pannel" id= "result_test_sse">
+							<div class= "col-md-6" id= "result_test_sse">
+								<div id="prev-hash">
+									<div class="row">
+										<label>Previous Valid Hash</label>
+									</div>
+									<div class="row">
+										<input id="prev_hash_input" name= "prev_hash_input" type="text" class="col form-control" readonly>
+									</div>
+								</div>
 								<div class="row">
 									<div class="form-group input-group dinamic_board">
 										<span class="input-group-btn">
