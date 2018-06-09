@@ -246,8 +246,13 @@ function logout(){
         url: "php/logout.php",
         type: "POST",
         data: "",
-        success: function(result){
-            //window.location = "https://www.example.com"
+        complete: function(){
+            console.log("Ajax_success");
+            window.location = "http://localhost/projects/blockchain-class/index.html"
+        },
+        success: function(){
+            console.log("Ajax_success");
+            window.location = "http://localhost/projects/blockchain-class/index.html"
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("Ajax_error");

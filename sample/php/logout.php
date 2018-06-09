@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $directoryName = explode('/', $_SERVER['REQUEST_URI'])[3];
     $sessionName = substr($directoryName, 8);
 
-    if ($directoryName == "sample" || $sessionName = false) $sessionName = "";
+    if ($directoryName == "sample" || $sessionName == false) $sessionName = "";
     deleteSession($sessionName);
 }
 ?>
