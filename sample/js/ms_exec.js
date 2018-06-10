@@ -4,6 +4,7 @@ $(document).ready(function() {
     hidePannel();
     initialData();
     sseHandler();
+    showModal();
     console.log(input_data);
     $("#hash_button_new").click(function(){
         console.log(button_disabled);
@@ -19,11 +20,21 @@ $(document).ready(function() {
       hideTextArea(true);
     });
     $(".dinamic_board_btn").click(function(){
-      var index = $(this).parent().parent().parent().index();
+      var index = $(this).parent().parent().index(".dinamic_board");
+      console.log(index);
       showData(index);
       hideTextArea(false);
     });
     $("#logout-button").click(function(){
         logout();
+    });
+    $(".next-modal").click(function(){
+        nextModalContent();
+    });
+    $(".previous-modal").click(function(){
+        previousModalContent();
+    });
+    $(".close-modal").click(function(){
+        hideModal();
     });
 });

@@ -67,6 +67,7 @@ function initialData() {
   $("#dificulty_new").val(3);
   $("#merkle_root_new").val(randomHash());
   $("#nonce_new").val(1);
+  $("#prev_hash_input").val(frontalPadding("",64));
 }
 
 //Initial post when accessing inedx file
@@ -256,4 +257,45 @@ function logout(){
             console.log("Ajax_error");
         }
     });
+}
+
+//Shows modal and first content when the page is loaded
+function showModal(){
+    document.getElementById("myModal").style.display = "block";
+    document.getElementsByClassName("modal-content").item(0).style.display = "block";
+}
+
+//Shows modal and first content when the page is loaded
+function hideModal(){
+    var modalContents = document.getElementsByClassName("modal-content");
+    for (var i = 0; i < modalContents.length; i++) {
+        modalContents[i].style.display = "none";
+    }
+    document.getElementById("myModal").style.display = "none";
+}
+
+//Switches to the next content modal content available
+function nextModalContent(){
+    var modalContents = document.getElementsByClassName("modal-content");
+    for (var i = 0; i < modalContents.length; i++) {
+        var display = modalContents[i].style.display.toString();
+        if (display.localeCompare("block") == 0 && i < modalContents.length -1){
+            modalContents[i].style.display = "none";
+            modalContents[i+1].style.display = "block";
+            i++;
+        }
+    }
+}
+
+//Switches to the previous content modal content available
+function previousModalContent(){
+    var modalContents = document.getElementsByClassName("modal-content");
+    for (var i = modalContents.length-1; i >= 0; i--) {
+        var display = modalContents[i].style.display.toString();
+        if (display.localeCompare("block") == 0 && i > 0){
+            modalContents[i].style.display = "none";
+            modalContents[i-1].style.display = "block";
+            i--;
+        }
+    }
 }
