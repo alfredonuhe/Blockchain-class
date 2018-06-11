@@ -82,7 +82,7 @@
             <div class="row vertical-align-middle">
             </div>
             <div class="row">
-                <h2 class="col-xs-10 col-xs-push-1">Enter session data:</h2>
+                <h2 class="col-xs-10 col-xs-push-1">Login into session:</h2>
             </div>
             <div class = "row">
                 <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/blockchain-class/php/login_action.php" method="post">
