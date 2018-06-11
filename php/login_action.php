@@ -3,9 +3,9 @@
 include('utilities_action.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    registerUser();
+    loginUser();
 } else {
-    include('register.php');
+    include('../index.php');
 }
 
 ?>

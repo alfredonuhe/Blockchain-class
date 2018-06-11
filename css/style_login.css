@@ -1,5 +1,14 @@
-body,html, .container-fluid{
+body,html, .container{
     height:100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.left-side-pannel {
+    background-color: rgb(249, 249, 249);
+}
+
+.right-side-pannel {
     background-color: rgb(238, 238, 238);
 }
 
@@ -7,6 +16,66 @@ body,html, .container-fluid{
   height: 33%;
 }
 
+.vertical-align-quarter {
+    height: 16.5%;
+}
+
 .form-box {
-  border-color: black;
+  border-color: black; /*no funciona*/
+}
+
+.as-parent {
+    height: 100%;
+}
+
+.line {
+    border-right: 17px ridge #2390c9;
+}
+
+.bitcoin-image {
+    display: inline-block;
+    width:   4%;
+    height:  4%;
+}
+
+.minings-image {
+    display: inline-block;
+    width:   10%;
+    height:  10%;
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    word-wrap: break-word;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 400%;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 5%;
+    word-wrap: break-word;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 200%;
+    font-weight: 700;
+    margin-bottom: 10%;
+    word-wrap: break-word;
+}
+
+.session-input {
+    margin-bottom: 5%;
+}
+
+.error-message {
+    font-size: 20px;
+    color: red;
+}
+
+#login-tab, #register-tab {
+    display:none;
 }

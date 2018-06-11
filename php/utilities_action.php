@@ -28,7 +28,7 @@ class MyDB extends SQLite3
 {
     function __construct()
     {
-        $this->open('mydb.sq3');
+        $this->open('../mydb.sq3');
     }
 }
 
@@ -47,24 +47,24 @@ function createSessionDirectory($sessionName)
     /*
     * Checks whether the user is submitting a form
     */
-    $dest = "./session_$sessionName";
-    $src = "./sample/*";
+    $dest = "../session_$sessionName";
+    $src = "../sample/*";
 
     //check filesystem for a match
     if (file_exists($dest)) {
         $msg = 'Error. Session with specified name already exists.';   //assign an error message
-        include('register.php');  //include the html code(ie. to display the login form and other html tags)
+        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     } elseif (!mkdir($dest)) {
         $msg = 'Error. Could not create session.';   //assign an error message
-        include('register.php');  //include the html code(ie. to display the login form and other html tags)
+        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     } else {
         //copy sentence depending on running OS
         exec("cp -rp $src $dest 2>&1", $output);
         if ($output[0] != NULL) {
             $msg = 'Error. Could not prepare session files.';   //assign an error message
-            include('register.php');  //include the html code(ie. to display the login form and other html tags)
+            include('../index.php');  //include the html code(ie. to display the login form and other html tags)
             die;
         }
     }
@@ -87,7 +87,7 @@ function registerUser()
 
     if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
-        include('register.php');  //include the html code(ie. to display the login form and other html tags)
+        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 
@@ -95,7 +95,7 @@ function registerUser()
 
     if (!empty($sessionQuery->sessionName) || !empty($sessionQuery->passwordHash)) {
         $msg = '<br/>Error. This session already exists.';   //assign an error message
-        include('register.php');  //include the html code(ie. to display the login form and other html tags)
+        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 
@@ -122,7 +122,7 @@ function loginUser()
 
     if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
-        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 
@@ -131,7 +131,7 @@ function loginUser()
     if (empty($sessionQuery->sessionName) || empty($sessionQuery->passwordHash)
         || strcmp($sessionPasswordHash, $sessionQuery->passwordHash) != 0) {
         $msg = '<br/>Error. Incorrect session name or password.';   //assign an error message
-        include('login.php');  //include the html code(ie. to display the login form and other html tags)
+        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 

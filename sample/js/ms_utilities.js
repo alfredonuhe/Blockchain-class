@@ -251,7 +251,7 @@ function logout(){
         },
         success: function(){
             console.log("Ajax_success");
-            window.location = "http://localhost/projects/blockchain-class/index.html"
+            window.location = "../../index.php"
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("Ajax_error");
