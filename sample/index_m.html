@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
 		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 		<link rel="stylesheet" href="css/style.css" media="screen">
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="js/moment.min.js"></script>
@@ -89,30 +90,30 @@
 											<label>Version</label>
 										</div>
 										<div class="row">
-											<input id="version_new" name= "version_new" type="text" class="col form-control">
+											<input id="version_new" name= "version_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
-											<label>Previous block Hash</label>
+											<label>Previous block hash</label>
 										</div>
 										<div class="row">
-											<input id="prev_block_new" name= "prev_block_new" type="text" class="col form-control">
+											<input id="prev_block_new" name= "prev_block_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
 											<label>Dificulty</label>
 										</div>
 										<div class="row">
-											<input id="dificulty_new" name= "dificulty_new" type="text" class="col form-control">
+											<input id="dificulty_new" name= "dificulty_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
 											<label>Timestamp</label>
 										</div>
 										<div class="row">
-											<input id="timestamp_new" name= "timestamp_new" type="text" class="col form-control" readonly>
+											<input id="timestamp_new" name= "timestamp_new" type="text" class="col form-control input-margin-bottom" readonly>
 										</div>
 										<div class="row">
 											<label>Merkle Root</label>
 										</div>
-										<div class="row input-group">
+										<div class="row input-group input-margin-bottom">
 											<input id="merkle_root_new" name= "merkle_root_new" type="text" class="form-control">
 											<span class="input-group-btn">
 												<button id="random_hash_new" class="btn btn-default" type="button">New</button>
@@ -124,15 +125,15 @@
 										</div>
 										<div class="row">
 											<div class="form-group">
-													<input id="nonce_new" name= "nonce_new" type="text" class="col form-control">
+													<input id="nonce_new" name= "nonce_new" type="text" class="col form-control input-margin-bottom">
 											</div>
 											<button id="hash_button_new" class="col-md-2 btn btn-primary" type="button">Try</button>
 										</div>
-										<div class="row">
+										<div class="row input-margin-top">
 											<label>Block Hash</label>
 										</div>
 										<div class="row">
-											<input id="block_hash_new" name= "block_hash_new" type="text" class="col-2 form-control" readonly>
+											<input id="block_hash_new" name= "block_hash_new" type="text" class="col-2 form-control input-margin-bottom" readonly>
 										</div>
 								</form>
 							</div>
@@ -231,11 +232,9 @@
 						</div>
 					</div>
 					<div class="tab-pane" id="about">
-						<h2>About <small>open source bitcoin wallet</small></h2>
-						<p>Version 1.3</p>
-						<p>Compatible with bitcoin-qt</p>
-						<p>Github <a href="https://github.com/OutCast3k/coinbin/">https://github.com/OutCast3k/coinbin/</a></p>
-						<p>TOR <a href="http://4zpinp6gdkjfplhk.onion">4zpinp6gdkjfplhk.onion</a></p>
+						<h2>About <small>MiningS</small></h2>
+						<p>Version 2.0</p>
+						<p>Github <a href="https://github.com/alfredonuhe/blockchain-class">https://github.com/alfredonuhe/blockchain-class</a></p>
 						<h3>What is Bitcoin?</h3>
 						<p>Bitcoin is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See <a href="http://www.weusecoins.com/" target="_blank">weusecoins.com</a> for more information.</p>
 						<p>If you are looking to buy some Bitcoin try <a href="https://localbitcoins.com/?ch=173j" target="_blank">LocalBitcoins.com</a>.</p>
@@ -319,9 +318,9 @@
 								<p>Mined block appear on the left side of the page. Blocks can be either correct or incorrect (green or red). To
 									correctly mine a block you need to input the correct data, and this is:</p>
 								<ol start="1">
-									<li>The previous block hash of the most recent valid block.</li>
-									<li>The same difficulty as the the rest of mined blocks.</li>
-									<li>A newly generated Merkle Root hash.</li>
+									<li><span>The previous block hash of the most recent valid block.</span></li>
+									<li><span>The same difficulty as the the rest of mined blocks.</span></li>
+									<li><span>A newly generated Merkle Root hash.</span></li>
 								</ol>
 								<p>If this three conditions are satisfied when a block is generated, it will appear in green. Otherwise, it will
 									appear in red.</p>
@@ -389,13 +388,12 @@
 				</div>
 			</div>
 		</div>
+		<div class="footer">
+			<div class="container">
+				<div class="text-right">
+					<p class="text-muted footer-text" align="right" >Version 2.0</p>
+				</div>
+			</div>
+		</div>
 	</body>
-	<footer id="footer">
-		<div class="col-md-6">
-			<p class="text-muted" style="padding-left:6%;"> Icon crafted using contents form <a href="https://www.flaticon.com/authors/maxim-basinski" target="_blank">Maxim Basinski</a> and <a href="https://www.flaticon.com/authors/dinosoftlabs" target="_blank">DinosoftLabs</a> from www.flaticon.com.</p>
-		</div>
-		<div class="col-md-6">
-			<p class="text-muted" align="right" style="padding-right:8%;" >Version 1.1</p>
-		</div>
-	</footer>
 </html>
