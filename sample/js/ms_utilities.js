@@ -197,6 +197,7 @@ function updateQueue(server_queue) {
   for (var i = server_queue.newestIndex-1; i >=0 ; i--) {
     new_queue.enqueue(server_queue.storage[i]);
   }
+  new_queue._validPreviousHash = server_queue.valid_prev_hash;
 }
 
 // Disables 'Try' button after finding a correct hash

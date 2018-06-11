@@ -80,15 +80,10 @@ function refreshPannelQ(new_queue){
       }
     }
 
-    for (var i = 0; i < new_queue.size(); i++) {
-        if (new_queue._storage[i].valid_block) {
-          prev_hash_input.value = new_queue._storage[i].block_hash_ms;
-          break;
-        }
-    }
-
     if (new_queue.size() == 0) {
         prev_hash_input.value = frontalPadding("", 64);
+    }else{
+        prev_hash_input.value = new_queue._validPreviousHash;
     }
 
 }

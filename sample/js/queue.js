@@ -1,6 +1,7 @@
 function Queue() {
     this._oldestIndex = 0;
     this._newestIndex = 0;
+    this._validPreviousHash = "";
     this._storage = {};
 }
 

@@ -56,6 +56,7 @@ function isValidBlock($org_queue, $block_aux){
     $org_queue->valid_prev_hash = $block_aux->block_hash_ms;
     $org_queue->valid_dificulty = $block_aux->dificulty_ms;
     $org_queue->valid_merkle = $block_aux->merkle_root_ms;
+    return true;
   }else {
     if ($org_queue->valid_prev_hash == $block_aux->prev_block_ms && $org_queue->valid_dificulty == $block_aux->dificulty_ms &&
       $org_queue->valid_merkle !== $block_aux->merkle_root_ms) {
@@ -63,7 +64,9 @@ function isValidBlock($org_queue, $block_aux){
       $org_queue->valid_prev_hash = $block_aux->block_hash_ms;
       $org_queue->valid_dificulty = $block_aux->dificulty_ms;
       $org_queue->valid_merkle = $block_aux->merkle_root_ms;
+      return true;
     }
   }
+  return false;
 }
 ?>
