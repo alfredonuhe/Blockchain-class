@@ -13,19 +13,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="css/style_login.css" media="screen">
+    <link rel="stylesheet" href="/projects/blockchain-class/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="/projects/blockchain-class/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/projects/blockchain-class/css/style_login.css" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/moment.min.js"></script>
-    <script type="text/javascript" src="js/transition.js"></script>
-    <script type="text/javascript" src="js/collapse.js"></script>
-    <script type="text/javascript" src="js/ms_exec.js"></script>
+    <script type="text/javascript" src="/projects/blockchain-class/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/projects/blockchain-class/js/moment.min.js"></script>
+    <script type="text/javascript" src="/projects/blockchain-class/js/transition.js"></script>
+    <script type="text/javascript" src="/projects/blockchain-class/js/collapse.js"></script>
+    <script type="text/javascript" src="/projects/blockchain-class/js/ms_exec.js"></script>
 
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/projects/blockchain-class/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/projects/blockchain-class/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-xs-10 col-xs-push-1">
                     <p>MiningS is a Bitcoin
-                        <span><img class="bitcoin-image" src="images/bitcoin-icon.png" alt="bitcoin image"></span>
+                        <span><img class="bitcoin-image" src="/projects/blockchain-class/images/bitcoin-icon.png" alt="bitcoin image"></span>
                         mining simulator using proof of work.
                     </p>
                     <p>In the simulator you will be able to mine blocks, select the mining difficulty and compete with
@@ -85,7 +85,7 @@
                 <h2 class="col-xs-10 col-xs-push-1">Enter session data:</h2>
             </div>
             <div class = "row">
-                <form class="col-xs-10 col-xs-push-1 form-box" action = "php/login_action.php" method="post">
+                <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/blockchain-class/php/login_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="Session name">
@@ -113,7 +113,7 @@
                 <h2 class="col-xs-10 col-xs-push-1">Register new session:</h2>
             </div>
             <div class = "row">
-                <form class="col-xs-10 col-xs-push-1 form-box" action = "php/register_action.php" method="post">
+                <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/blockchain-class/php/register_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="New session name">

@@ -244,14 +244,14 @@ function showData(index){
 function logout(){
     var sessionName = window.location.pathname.split( '/' )[3].substring(8);
     $.ajax({
-        url: "../logout.php",
+        url: "../php/logout.php",
         type: "POST",
         data: {
             name: sessionName
         },
         success: function(){
             console.log("Ajax_success");
-            window.location = "../../index.php"
+            window.location = "../index.php"
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("Ajax_error");
