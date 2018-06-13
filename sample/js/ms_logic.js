@@ -1,7 +1,11 @@
-//Checks if result of hash is a corerct hash
-function correctHash(hash, dificulty) {
+/**
+ * Checks if generated hash meets the difficulty condition.
+ * @param hash Hash generated with input data.
+ * @param difficulty Difficulty used as header input.
+ */
+function correctHash(hash, difficulty) {
   $("#block_hash_new").val(hash);
-  for (var i = 0; i < dificulty; i++) {
+  for (var i = 0; i < difficulty; i++) {
     if (hash.charAt(i) != "0") {
       newNonce();
       return;
@@ -14,8 +18,12 @@ function correctHash(hash, dificulty) {
   return;
 }
 
-/*Concatenates all of the values of the form
-only if all data is providad in the form*/
+/**
+ * Concatenates all of the values of the left side form only if
+ * all the required data is provided.
+ * @param input_data Data from form inputs.
+ * @returns {boolean} True if all required data conditions are met.
+ */
 function concatById(input_data) {
   $("#timestamp_new").val(calcTimestamp());
   hash_message='';
@@ -31,8 +39,10 @@ function concatById(input_data) {
   console.log(hash_message);
   return true;
 }
-//revisar
-//Updates queue of recent blocks
+
+/**
+ * Check if method is necessary
+ */
 function updateStylesQueue(){
   if (new_queue._newestIndex == new_queue._oldestIndex) return;
   var new_data = new_queue._storage[0].block_hash_ms;
@@ -49,8 +59,10 @@ function updateStylesQueue(){
     window.setTimeout(function(){ recent_queue.dequeue();}, 5000);
   }
 }
-//revisar
-//Sets styles for recent blocks
+
+/**
+ * Check if method is necessary
+ */
 function findInPannel(dinamic_board){
   for (var i = 0; i < dinamic_board.length; i++) {
     for (var j = 0; j < recent_queue.size(); j++) {
@@ -65,7 +77,10 @@ function findInPannel(dinamic_board){
   }
 }
 
-//Refreshes values of hashes on right side panel
+/**
+ * Updates the right side panel with the new Queue information.
+ * @param new_queue Queue with updated information.
+ */
 function refreshPannelQ(new_queue){
   if (text_area_on) return;
   var dinamic_board = document.getElementsByClassName("dinamic_board");
@@ -88,7 +103,10 @@ function refreshPannelQ(new_queue){
 
 }
 
-//Handles Server Sent Events
+/**
+ * Method in charge of managing the SSE. If the server queue
+ * is equal to the stored queue, no action is taken.
+ */
 function sseHandler() {
   if(typeof(EventSource) !== "undefined") {
       var source = new EventSource("php/sse_test.php");

@@ -1,4 +1,11 @@
-//Document execution of the Mining Simulator
+/**
+ * Document execution. Some previous jobs need to be done before
+ * starting the SSE handler: An initial post to the server, hide
+ * all the right side panel, insert initial data into left side
+ * panel and start the modal view.
+ *
+ * Buttons functionalities are also defined.
+ */
 $(document).ready(function() {
     initialPost();
     hidePannel();
