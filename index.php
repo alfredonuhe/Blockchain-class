@@ -135,9 +135,9 @@
             </div>
         </div>
     </div>
-    <div class="as-parent show-mobile">
-        <div class="row as-parent">
-            <div class="col-xs-12 as-parent line left-side-pannel">
+    <div class="show-mobile">
+        <div class="row">
+            <div class="col-xs-12 line left-side-pannel">
                 <div class="row vertical-align-quarter">
                 </div>
                 <div class="row">
@@ -159,8 +159,8 @@
                 </div>
             </div>
         </div>
-        <div class="row as-parent">
-            <div id="login-register-tab-mobile" class="col-xs-12 as-parent right-side-pannel">
+        <div class="row">
+            <div id="login-register-tab-mobile" class="col-xs-12 right-side-pannel">
                 <div class="row vertical-align-middle">
                 </div>
                 <div class="row">
@@ -186,7 +186,7 @@
                     </div>
                 </div>
             </div>
-            <div id="login-tab-mobile" class="col-xs-12 as-parent right-side-pannel">
+            <div id="login-tab-mobile" class="col-xs-12 right-side-pannel">
                 <div class="row vertical-align-middle">
                 </div>
                 <div class="row">
@@ -214,7 +214,7 @@
                     </form>
                 </div>
             </div>
-            <div id="register-tab-mobile" class="col-xs-12 as-parent right-side-pannel">
+            <div id="register-tab-mobile" class="col-xs-12 right-side-pannel">
                 <div class="row vertical-align-middle">
                 </div>
                 <div class="row">

@@ -4,6 +4,24 @@ body,html, .container{
     margin: 0 auto;
 }
 
+@media only screen and (max-device-width: 480px) {
+    .show-mobile {
+        display: block;
+    }
+    .hide-mobile {
+        display: none;
+    }
+}
+
+@media only screen and (min-device-width: 481px) {
+    .show-mobile {
+        display: none;
+    }
+    .hide-mobile {
+        display: block;
+    }
+}
+
 .left-side-pannel {
     background-color: rgb(249, 249, 249);
 }
@@ -69,26 +87,8 @@ h2 {
     color: red;
 }
 
-#login-tab, #register-tab {
+#login-tab, #register-tab, #login-tab-mobile, #register-tab-mobile{
     display:none;
-}
-
-@media only screen and (max-device-width: 480px) {
-    .show-mobile {
-        display: block;
-    }
-    .hide-mobile {
-        display: none;
-    }
-}
-
-@media only screen and (min-device-width: 481px) {
-    .show-mobile {
-        display: none;
-    }
-    .hide-mobile {
-        display: block;
-    }
 }
 
 @media (max-device-width: 480px) {
@@ -119,12 +119,17 @@ h2 {
         color: red;
     }
 
-    .vertical-align-quarter {
+    .vertical-align-quarter, .vertical-align-middle{
         height: 5%;
+    }
+
+    .left-side-pannel, .right-side-pannel {
+        padding-bottom: 50px;
     }
 
     .vertical-align-middle {
         height: 5%;
+        margin-bottom: 5%;
     }
 
     .line {
