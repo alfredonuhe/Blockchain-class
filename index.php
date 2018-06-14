@@ -88,11 +88,11 @@
                 <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/blockchain-class/php/login_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="Username">
+                        <input type="text" class="form-control" name= "session-name" placeholder="Username">
                     </div>
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
-                        <input type="text" class="form-control" name= "session-password" id="session-password" placeholder="Session id">
+                        <input type="text" class="form-control" name= "session-password" placeholder="Session id">
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
@@ -116,11 +116,11 @@
                 <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/blockchain-class/php/register_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="Username">
+                        <input type="text" class="form-control" name= "session-name" placeholder="Username">
                     </div>
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
-                        <input type="text" class="form-control" name= "session-password" id="session-password" placeholder="Session id">
+                        <input type="text" class="form-control" name= "session-password" placeholder="Session id">
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
