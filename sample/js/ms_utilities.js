@@ -1,24 +1,36 @@
-//Defining global variables
+/**
+ * Variable initializations.
+ */
 var input_data = [new infoInput("#version_new", 4,null,"Version",null),new infoInput("#prev_block_new", 64,null,"Previous block",null),new infoInput("#dificulty_new", 1,null,"Dificulty",null),
     new infoInput("#timestamp_new", 10,null,"Timestamp",null), new infoInput("#merkle_root_new", 64,null,"Merkle root",null),
     new infoInput("#nonce_new", 10,null,"Nonce",null)];
-//revisar
+
+//TODO: Look for unused variables
 var index_vector = [7,1,5,2,6,3,4];
 var hash_message= '';
 var button_disabled = false;
 var text_area_on = false;
-//revisar
+
 var info_array = [];
 var new_queue= new Queue();
 var recent_queue= new Queue();
 
-// Hash info object
+/**
+ * Check usage
+ */
 function infoBlock(hash, hash_message) {
   this.hash= hash;
   this.hash_message= hash_message;
 }
 
-// Hash info input
+/**
+ * Constructor of oject infoInput, it stores the form data.
+ * @param id ID of the html input.
+ * @param allowed_length Allowed length of input.
+ * @param real_length Actual length of current content inside input.
+ * @param name Name of the input.
+ * @param value Value stored inside input.
+ */
 function infoInput(id, allowed_length, real_length, name, value) {
   this.id= id;
   this.allowed_length= allowed_length;
@@ -27,41 +39,61 @@ function infoInput(id, allowed_length, real_length, name, value) {
   this.value= value;
 }
 
-//Checks if value is a number
+/**
+ * Check usage
+ */
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-//Plays notification sound when changes are made
+/**
+ * Plays a sound for newly generated blocks.
+ */
 function playSound(){
   var audio = new Audio('media/notification_sound.mp3');
   audio.play();
 }
 
-//sets new nonce for new search
+/**
+ * Increments the nonce value in the form.
+ */
 function newNonce(){
   var nonce = parseInt($("#nonce_new").val()) +1;
   $("#nonce_new").val(nonce);
 }
 
-//Creates random hash
+/**
+ * Calculates a random hash using the SHA256 algorithm.
+ * @returns {*} Hash value.
+ */
 function randomHash(){
   return Crypto.SHA256(String(Math.random()));
 }
 
-//Calculates form timestamp
+/**
+ * Calculates current Epoch timestamp.
+ * @returns {number} Value of timestamp.
+ */
 function calcTimestamp() {
      return Math.floor((new Date).getTime()/1000);
 }
 
-//add frotal padding to data
+/**
+ * Adds frontal padding, ceros, to form values reaching
+ * it's required length.
+ * @param num Original form value.
+ * @param size Total length of value
+ * @returns {string} Final string with frontal padding.
+ */
 function frontalPadding(num, size) {
     var s = num+"";
     while (s.length < size) s = "0" + s;
     return s;
 }
 
-//Initial form data
+/**
+ * Sets initial form data at page load.
+ */
 function initialData() {
   $("#timestamp_new").val(calcTimestamp());
   $("#dificulty_new").val(3);
@@ -70,7 +102,9 @@ function initialData() {
   $("#prev_hash_input").val(frontalPadding("",64));
 }
 
-//Initial post when accessing inedx file
+/**
+ * Generates an initial post at page load.
+ */
 function initialPost(){
   $.ajax({
           url: "php/new_user.php",
@@ -78,7 +112,13 @@ function initialPost(){
           data: "",
       });
 }
-//Sets style for correct hash
+
+/**
+ * Sets correct or incorrect hash style for the
+ * generated hash with the form data.
+ * @param correct True if hash is correct and
+ *                  false if it isn't.
+ */
 function correctHashStyle(correct){
   if (correct) {
     $("#block_hash_new")
@@ -91,7 +131,9 @@ function correctHashStyle(correct){
   .css("background-color","#eee");
 }
 
-//Posts form with ajax
+/**
+ * Posts form data to the server.
+ */
 function postForm(){
   var form = $("#form_ms");
   $.ajax({
@@ -107,7 +149,12 @@ function postForm(){
   });
 }
 
-//Incorrect or correct block style
+/**
+ * Sets correct and incorrect style for right side
+ * panel blocks.
+ * @param correct True for correct blocks.
+ * @param i Index if block needing CSS style.
+ */
 function blockStyle(correct, i){
   if (correct) {
     $(".dinamic_board input:eq(" + i + ")")
@@ -120,7 +167,11 @@ function blockStyle(correct, i){
   .css("background-color","#f5e1e1");
 }
 
-//Latest block hash style
+/**
+ * Sets style for newly generated blocks in
+ * right side panel.
+ * @param correct True for a new block.
+ */
 function newBlockStyle(correct){
   if (correct) {
     $(".dinamic_board input:eq(0)")
@@ -139,7 +190,10 @@ function newBlockStyle(correct){
   }
 }
 
-//Finds incorrect blocks in the blockchain
+/**
+ * Method to decide correct or incorrect style
+ * for right side panel blocks.
+ */
 function setBlockStyles(){
   if(new_queue.size()==0)return;
   for (var i = 0; i < new_queue.size(); i++) {
@@ -151,7 +205,9 @@ function setBlockStyles(){
   }
 }
 
-//Hide pannel at beguinning
+/**
+ * Hides right side panel at page load.
+ */
 function hidePannel() {
   var dinamic_board = document.getElementsByClassName("dinamic_board");
   var dinamic_board_text = document.getElementsByClassName("dinamic_board_text");
@@ -163,7 +219,11 @@ function hidePannel() {
   }
 }
 
-//Hide block text areas
+/**
+ * Hides extended block information dialog.
+ * @param hide True to hide the dialog,
+ *              false to show the dialog.
+ */
 function hideTextArea(hide) {
   var dinamic_board = document.getElementsByClassName("dinamic_board");
   var dinamic_board_text = document.getElementsByClassName("dinamic_board_text");
@@ -184,14 +244,20 @@ function hideTextArea(hide) {
   }
 }
 
-//Empty the panel queue
+/**
+ * Emptys queue's content.
+ * @param new_queue Queue to be emptied.
+ */
 function emptyQueue(new_queue) {
     while (new_queue.size() != 0) {
       new_queue.dequeue();
     }
 }
 
-//Update the panel queue
+/**
+ * Updated queue's content with another queue.
+ * @param server_queue queue used to update "new_queue".
+ */
 function updateQueue(server_queue) {
   emptyQueue(new_queue);
   for (var i = server_queue.newestIndex-1; i >=0 ; i--) {
@@ -200,7 +266,9 @@ function updateQueue(server_queue) {
   new_queue._validPreviousHash = server_queue.valid_prev_hash;
 }
 
-// Disables 'Try' button after finding a correct hash
+/**
+ * Disables hash calculating "Try" button.
+ */
 function disableButton(){
   button_disabled = true;
   console.log("disabled");
@@ -217,7 +285,11 @@ function disableButton(){
   ,5000);
 }
 
-//calculates block message
+/**
+ * Calculates block in raw format.
+ * @param object_values
+ * @returns {string}
+ */
 function calcBlockMessage(object_values){
   var message = "";
   for (var i = 0; i < input_data.length; i++) {
@@ -226,7 +298,10 @@ function calcBlockMessage(object_values){
   return message;
 }
 
-//Show block data from selected hash in pannel
+/**
+ * Shows block data in expanded text dialog.
+ * @param index Index of the block to show.
+ */
 function showData(index){
   var text_area = $("#dinamic_board_text_area");
   var data = new_queue._storage;
@@ -241,7 +316,9 @@ function showData(index){
   }
 }
 
-//Logout by deleting the session files and its presence from the database
+/**
+ * Deletes session from server and database.
+ */
 function logout(){
     var sessionName = window.location.pathname.split( '/' )[3].substring(8);
     $.ajax({
@@ -260,13 +337,17 @@ function logout(){
     });
 }
 
-//Shows modal and first content when the page is loaded
+/**
+ * Shows simulator modal at page load.
+ */
 function showModal(){
     document.getElementById("myModal").style.display = "block";
     document.getElementsByClassName("modal-content").item(0).style.display = "block";
 }
 
-//Shows modal and first content when the page is loaded
+/**
+ * Hides modal when closed.
+ */
 function hideModal(){
     var modalContents = document.getElementsByClassName("modal-content");
     for (var i = 0; i < modalContents.length; i++) {
@@ -275,7 +356,9 @@ function hideModal(){
     document.getElementById("myModal").style.display = "none";
 }
 
-//Switches to the next content modal content available
+/**
+ * Shows next modal content.
+ */
 function nextModalContent(){
     var modalContents = document.getElementsByClassName("modal-content");
     for (var i = 0; i < modalContents.length; i++) {
@@ -288,7 +371,9 @@ function nextModalContent(){
     }
 }
 
-//Switches to the previous content modal content available
+/**
+ * Shows previous modal content.
+ */
 function previousModalContent(){
     var modalContents = document.getElementsByClassName("modal-content");
     for (var i = modalContents.length-1; i >= 0; i--) {
