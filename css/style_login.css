@@ -38,15 +38,9 @@ body,html, .container{
     height:  4%;
 }
 
-.minings-image {
-    display: inline-block;
-    width:   10%;
-    height:  10%;
-}
-
 p {
     font-family: 'Raleway', sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     word-wrap: break-word;
 }
 
@@ -54,7 +48,6 @@ h1 {
     font-family: 'Raleway', sans-serif;
     font-size: 400%;
     font-weight: 700;
-    font-style: italic;
     margin-bottom: 5%;
     word-wrap: break-word;
 }
@@ -78,4 +71,65 @@ h2 {
 
 #login-tab, #register-tab {
     display:none;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .show-mobile {
+        display: block;
+    }
+    .hide-mobile {
+        display: none;
+    }
+}
+
+@media only screen and (min-device-width: 481px) {
+    .show-mobile {
+        display: none;
+    }
+    .hide-mobile {
+        display: block;
+    }
+}
+
+@media (max-device-width: 480px) {
+    p {
+        font-family: 'Raleway', sans-serif;
+        font-size: 13px;
+        word-wrap: break-word;
+    }
+
+    h1 {
+        font-family: 'Raleway', sans-serif;
+        font-size: 150%;
+        font-weight: 700;
+        margin-bottom: 5%;
+        word-wrap: break-word;
+    }
+
+    h2 {
+        font-family: 'Raleway', sans-serif;
+        font-size: 100%;
+        font-weight: 700;
+        margin-bottom: 10%;
+        word-wrap: break-word;
+    }
+
+    .error-message {
+        font-size: 10px;
+        color: red;
+    }
+
+    .vertical-align-quarter {
+        height: 5%;
+    }
+
+    .vertical-align-middle {
+        height: 5%;
+    }
+
+    .line {
+        border-right: 0px ridge #2390c9;
+        border-bottom: 10px ridge #2390c9;;
+    }
+
 }
