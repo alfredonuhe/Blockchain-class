@@ -121,10 +121,6 @@ ol > li:before {
 	cursor: pointer;
 }
 
-.closer-prev-next{
-	left: 64%;
-}
-
 .footer {
 	height: 60px;
 	background-color: #f5f5f5;
@@ -149,6 +145,10 @@ h2 {
 	word-wrap: break-word;
 }
 
+.previous-margin {
+	margin-left: 65%;
+}
+
 @media (max-device-width: 480px) {
 	#result_test_sse, #form-pannel{
 		margin-right: 6%;
@@ -158,5 +158,19 @@ h2 {
 	.navbar-mobile {
 		padding-left: 6%;
 		padding-right: 6%;
+	}
+
+	h3 {
+		font-size: 20px;
+	}
+
+	.modal-content {
+		margin: 15% auto; /* 15% from the top and centered */
+		width: 100%; /* Could be more or less, depending on screen size */
+		height: auto;
+	}
+
+	.previous-margin {
+		margin-left: 30%;
 	}
 }
