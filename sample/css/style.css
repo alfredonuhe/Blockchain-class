@@ -46,10 +46,6 @@ body {
 	margin-left: 1%;
 }
 
-.result_test_sse {
-	margin-top:10%;
-}
-
 #prev-hash {
 	margin-bottom:15px;
 }
@@ -62,7 +58,7 @@ body {
 	margin-bottom:5px;
 }
 
-#logout-button {
+#logout-navbar {
 	display: none;
 }
 
@@ -158,4 +154,16 @@ h2 {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 700;
 	word-wrap: break-word;
+}
+
+@media (max-device-width: 480px) {
+	#result_test_sse, #form-pannel{
+		margin-right: 6%;
+		margin-left: 6%;
+	}
+
+	.navbar-mobile {
+		padding-left: 6%;
+		padding-right: 6%;
+	}
 }
