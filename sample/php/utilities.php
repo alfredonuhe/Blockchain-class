@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * This code holds functions used by other PHP files.
+ */
+
+/**
+ * Class Blockinfo used to store the post data sent by users.
+ */
 class Blockinfo{
   public $version_ms;
   public $prev_block_ms;
@@ -20,6 +28,10 @@ class Blockinfo{
   }
 }
 
+/**
+ * Captures the IP of a user.
+ * @return mixed returns the users's IP address.
+ */
 function getUserIP(){
     $client  = @$_SERVER['HTTP_CLIENT_IP'];
     $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -39,10 +51,14 @@ function getUserIP(){
     return $ip;
 }
 
-function storeUserIP($index){
+/**
+ * Manages users IP addresses.
+ * @param $isGeneralUser specifies if it is a general user.
+ */
+function storeUserIP($isGeneralUser){
   $myfile = fopen("ip_data.txt", "a") or die("Unable to open file!");
   $txt = getUserIP();
-  if ($index) {
+  if ($isGeneralUser) {
     fwrite($myfile, "wp: ".$txt."\n");
   } else {
     fwrite($myfile, "ms: ".$txt."\n");
@@ -50,6 +66,12 @@ function storeUserIP($index){
   fclose($myfile);
 }
 
+/**
+ * Checks if the posted block is a valid block.
+ * @param $org_queue current stored queue.
+ * @param $block_aux new block posted by user.
+ * @return bool returns true if valid.
+ */
 function isValidBlock($org_queue, $block_aux){
   if($org_queue->size()== 0){
     $block_aux->valid_block = true;

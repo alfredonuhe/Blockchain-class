@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * This code manages the Server Sent Events. The block queue is
+ * read from "data.bin" and sent to the users.
+ */
+
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 

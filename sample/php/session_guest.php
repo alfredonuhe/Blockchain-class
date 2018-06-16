@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * This code handles new blocks mined by the users. If the
+ * new block received is correct, it is added to "$Blockarray"
+ */
+
 header('Content-type: text/html; charset=utf-8');
 include "utilities.php";
 include "queue.php";

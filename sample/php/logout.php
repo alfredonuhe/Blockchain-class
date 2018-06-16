@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * This code handles the deletion of sessions from the
+ * server filesystem and also the database.
+ */
+
 include("../../utilities_action.php");
 
 /**
- * This Method deletes the session name form the database and removes files from server.
+ * Deletes the session name form the database and removes files from server.
  * @param $sessionName session to delete.
  */
 function deleteSession($sessionName)

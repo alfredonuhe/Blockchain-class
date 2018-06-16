@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Class Queue adapted with additional attributes.
+ */
+
 class Queue{
   public $oldestIndex;
   public $newestIndex;
