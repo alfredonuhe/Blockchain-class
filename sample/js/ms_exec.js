@@ -44,4 +44,7 @@ $(document).ready(function() {
     $(".close-modal").click(function(){
         hideModal();
     });
+    $("#homeBtn").click(function(){
+        window.location = "../index.php";
+    });
 });
