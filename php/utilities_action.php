@@ -83,7 +83,7 @@ function registerUser()
     $sessionName = strtolower($_POST["session-name"]);
     $sessionPassword = strtolower($_POST["session-password"]);
     $sessionPasswordHash = hash("sha256", $sessionPassword);
-    $path = "../session_$sessionName/index_m.html#mining";
+    $path = "../session_$sessionName/index.php#mining";
 
     if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
@@ -118,7 +118,7 @@ function loginUser()
     $sessionName = strtolower($_POST["session-name"]);
     $sessionPassword = strtolower($_POST["session-password"]);
     $sessionPasswordHash = hash("sha256", $sessionPassword);
-    $path = "../session_$sessionName/index_m.html#mining";
+    $path = "../session_$sessionName/index.php#mining";
 
     if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
         $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
