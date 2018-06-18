@@ -6,18 +6,18 @@
  */
 class SessionData
 {
-    public $passwordHash;
-    public $sessionName;
+    public $sessionIDHash;
+    public $userName;
 
-    function __construct($sessionName, $passwordHash)
+    function __construct($userName, $sessionIDHash)
     {
-        $this->sessionName = $sessionName;
-        $this->passwordHash = $passwordHash;
+        $this->userName = $userName;
+        $this->sessionIDHash = $sessionIDHash;
     }
 
     function toString()
     {
-        return "Session Name: " . $this->sessionName . "; Session password hash: " . $this->passwordHash;
+        return "User Name: " . $this->userName . "; Session ID hash: " . $this->sessionIDHash;
     }
 }
 
@@ -34,10 +34,10 @@ class MyDB extends SQLite3
 
 /**
  * This function creates a session in the server filesystem using the sample
- * session and the session name introduced by the user.
- * @param $sessionName the session name registered by the user in lowercase.
+ * session and the session ID Hash introduced by the user.
+ * @param $sessionIDHash the session name registered by the user in lowercase.
  */
-function createSessionDirectory($sessionName)
+function createSessionDirectory($sessionIDHash)
 {
     /*
     *LINUX CODE
@@ -47,7 +47,7 @@ function createSessionDirectory($sessionName)
     /*
     * Checks whether the user is submitting a form
     */
-    $dest = "../session_$sessionName";
+    $dest = "../session_$sessionIDHash";
     $src = "../sample/*";
 
     //check filesystem for a match
@@ -80,28 +80,31 @@ function createSessionDirectory($sessionName)
 function registerUser()
 {
     $msg = '';
-    $sessionName = strtolower($_POST["session-name"]);
-    $sessionPassword = strtolower($_POST["session-password"]);
-    $sessionPasswordHash = hash("sha256", $sessionPassword);
-    $path = "../session_$sessionName/index.php#mining";
+    $userName = strtolower($_POST["session-name"]);
+    $sessionID = strtolower($_POST["session-password"]);
+    $sessionIDHash = hash("sha256", $sessionID);
+    $path = "../session_$sessionIDHash/index.php#mining";
 
-    if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
-        $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
-        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
+    if ((empty($sessionID) && $sessionID !== '0') || empty($userName)) {
+        $msg = '<br/>Error. Username or session ID must contain data.';
+        include('../index.php');
         die;
     }
 
-    $sessionQuery = lookupSessionData($sessionName);
+    $sessionQuery = lookupSessionID($sessionIDHash);
 
-    if (!empty($sessionQuery->sessionName) || !empty($sessionQuery->passwordHash)) {
-        $msg = '<br/>Error. This session already exists.';   //assign an error message
-        include('../index.php');  //include the html code(ie. to display the login form and other html tags)
+    if (!empty($sessionQuery->userName) || !empty($sessionQuery->sessionIDHash)) {
+        $msg = '<br/>Error. This session already exists.';
+        include('../index.php');
         die;
     }
 
     /*Success...*/
-    createSessionDirectory($sessionName);
-    saveSessionData($sessionName, $sessionPasswordHash);
+    session_start();
+    $_SESSION["username"] = $userName;
+    $_SESSION["sessionIDHash"] = $sessionIDHash;
+    createSessionDirectory($sessionIDHash);
+    registerInDb($userName, $sessionIDHash);
     header("Location: $path");
 }
 
@@ -115,59 +118,90 @@ function registerUser()
 function loginUser()
 {
     $msg = '';
-    $sessionName = strtolower($_POST["session-name"]);
-    $sessionPassword = strtolower($_POST["session-password"]);
-    $sessionPasswordHash = hash("sha256", $sessionPassword);
-    $path = "../session_$sessionName/index.php#mining";
+    $userName = strtolower($_POST["session-name"]);
+    $sessionID = strtolower($_POST["session-password"]);
+    $sessionIDHash = hash("sha256", $sessionID);
+    $path = "../session_$sessionIDHash/index.php#mining";
+    session_start();
 
-    if ((empty($sessionPassword) && $sessionPassword !== '0') || empty($sessionName)) {
-        $msg = '<br/>Error. Session name or password must contain data.';   //assign an error message
+    if ((empty($sessionID) && $sessionID !== '0') || empty($userName)) {
+        $msg = '<br/>Error. Username or session ID must contain data.';   //assign an error message
         include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 
-    $sessionQuery = lookupSessionData($sessionName);
+    $sessionQuery = lookupSessionID($sessionIDHash);
 
-    if (empty($sessionQuery->sessionName) || empty($sessionQuery->passwordHash)
-        || strcmp($sessionPasswordHash, $sessionQuery->passwordHash) != 0) {
-        $msg = '<br/>Error. Incorrect session name or password.';   //assign an error message
+    if (empty($sessionQuery->userName) || empty($sessionQuery->sessionIDHash)) {
+        $msg = "<br/>Error. This session doesn't exist.";
+        include('../index.php');
+        die;
+    }
+
+    $sessionQuery = lookupLoginData($userName, $sessionIDHash);
+
+    if (isset($_SESSION['username']) && isset($_SESSION['sessionIDHash'])
+        && $_SESSION['username'] == $userName && $_SESSION['sessionIDHash'] == $sessionIDHash) {
+        header("Location: $path");
+        die;
+    }elseif (!empty($sessionQuery->userName) || !empty($sessionQuery->sessionIDHash)) {
+        $msg = '<br/>Error. Username already in use.';   //assign an error message
         include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }
 
     /*Success...*/
+    $_SESSION["username"] = $userName;
+    $_SESSION["sessionIDHash"] = $sessionIDHash;
+    registerInDb($userName, $sessionIDHash);
     header("Location: $path");
     die;
 
 }
 
 /**
- * This function stores a session name and its password's hash in the
+ * This function stores a username and its sessionIDHash in the
  * database. An auto-generated id is also stored automatically.
- * @param $sessionName session name registered by user.
- * @param $sessionPasswordHash password hash of session.
+ * @param $userName session name registered by user.
+ * @param $sessionIDHash password hash of session.
  */
-function saveSessionData($sessionName, $sessionPasswordHash)
+function registerInDb($userName, $sessionIDHash)
 {
     $db = new MyDB();
 
-    $db->exec("INSERT INTO sessions(name, passwordHash) VALUES ('$sessionName', '$sessionPasswordHash');");
+    $db->exec("INSERT INTO users(userName, sessionIDHash) VALUES ('$userName', '$sessionIDHash');");
     $db->close();
 }
 
 /**
  * This function searches into a database the sessions with the
- * specified session name. It returns all the matching sessions
- * and its password's hashes.
- * @param $sessionName session name to search in database.
+ * specified session ID hash and username. It returns
+ * all the matching sessions and its password's hashes.
+ * @param $sessionIDHash session id to search in database.
  * @return SessionData sessionData object returned containing all
- * matching session names and its password's hashes.
+ * matching session Ids and its users.
  */
-function lookupSessionData($sessionName)
+function lookupLoginData($userName, $sessionIDHash)
 {
     $db = new MyDB();
 
-    $result = $db->query("SELECT * FROM sessions WHERE name='$sessionName';");
+    $result = $db->query("SELECT * FROM users WHERE userName='$userName' AND sessionIDHash='$sessionIDHash';");
+    $resultsArray = $result->fetchArray();
+    $sessionData = new SessionData($resultsArray[1], $resultsArray[2]);
+    $db->close();
+    return $sessionData;
+}
+
+/**
+ * Looks in database for a session ID.
+ * @param $sessionIDHash
+ * @return SessionData
+ */
+function lookupSessionID($sessionIDHash)
+{
+    $db = new MyDB();
+
+    $result = $db->query("SELECT * FROM users WHERE sessionIDHash='$sessionIDHash';");
     $resultsArray = $result->fetchArray();
     $sessionData = new SessionData($resultsArray[1], $resultsArray[2]);
     $db->close();
@@ -197,16 +231,18 @@ function deleteDir($path)
 }
 
 /**
- * This Method deletes the session name form the database and removes files from server.
- * @param $sessionName session to delete.
+ * This method deletes the session form the database.
+ * @param $sessionIDHash session to delete.
  */
-function deleteSession($sessionName)
+function deleteSession($sessionIDHash)
 {
-    if ($sessionName == "") return;
+    if ($sessionIDHash == "") return;
     $db = new MyDB();
-    $db->exec("DELETE FROM sessions WHERE name = '$sessionName';");
+    $db->exec("DELETE FROM users WHERE sessionIDHash = '$sessionIDHash';");
     $db->close();
 }
+
+
 /**
  * Queries used to manipulate the SQLite database:
  *
