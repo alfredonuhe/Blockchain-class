@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['username'])) {
+$sessionIDHash = substr($_SERVER['REQUEST_URI'], 35, 64);
+if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $sessionIDHash) {
     header("Location: http://localhost/projects/blockchain-class/index.php");
     exit();
 }
@@ -9,9 +10,9 @@ if(!isset($_SESSION['username'])) {
 <html lang="en">
 	<head>
 
-		<title>Bitcoin Wallet by Coinb.in</title>
+		<title>MiningS by alfredonuhe</title>
 
-        	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 		<meta name="keywords" content="bitcoin, wallet, multisig, multisignature, address, browser, segwit, javascript, js, broadcast, transaction, verify, decode" />
 		<meta name="description" content="A Bitcoin Wallet written in Javascript. Supports Multisig, SegWit, Custom Transactions, nLockTime and more!" />
 
