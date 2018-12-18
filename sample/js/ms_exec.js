@@ -47,4 +47,13 @@ $(document).ready(function() {
     $("#homeBtn").click(function(){
         window.location = "../index.php";
     });
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+
+    var onloadCallback = function() {
+        grecaptcha.render('recaptcha', {
+            'sitekey' : 'your_site_key'
+        });
+    };
 });
