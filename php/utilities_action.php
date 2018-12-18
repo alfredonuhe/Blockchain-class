@@ -86,7 +86,7 @@ function registerUser()
     $path = "../session_$sessionIDHash/index.php#mining";
 
     if ((empty($sessionID) && $sessionID !== '0') || empty($userName)) {
-        $msg = '<br/>Error. Username or session ID must contain data.';
+        $msg = '<br/>Error. Username and session ID must contain data.';
         include('../index.php');
         die;
     }
@@ -125,7 +125,7 @@ function loginUser()
     session_start();
 
     if ((empty($sessionID) && $sessionID !== '0') || empty($userName)) {
-        $msg = '<br/>Error. Username or session ID must contain data.';   //assign an error message
+        $msg = '<br/>Error. Username and session ID must contain data.';   //assign an error message
         include('../index.php');  //include the html code(ie. to display the login form and other html tags)
         die;
     }

@@ -1,10 +1,10 @@
 <?php
 session_start();
-$sessionIDHash = substr($_SERVER['REQUEST_URI'], 35, 64);
+/*$sessionIDHash = substr($_SERVER['REQUEST_URI'], 35, 64);
 if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $sessionIDHash) {
-    header("Location: http://localhost/projects/blockchain-class/index.php");
+    header("Location: http://localhost/projects/bitcoin-mining-simulator/index.php");
     exit();
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,7 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a href="http://localhost/projects/blockchain-class/index.php" class="navbar-brand" id="homeBtn"><img src="../images/logo-mining-simulator.png" style="height:32px;margin-top:-5px;margin-left:-10px"></a>
+						<a href="http://localhost/projects/bitcoin-mining-simulator/index.php" class="navbar-brand" id="homeBtn"><img src="../images/logo-mining-simulator.png" style="height:32px;margin-top:-5px;margin-left:-10px"></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">

@@ -13,19 +13,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/projects/blockchain-class/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="/projects/blockchain-class/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="/projects/blockchain-class/css/style_login.css" media="screen">
+    <link rel="stylesheet" href="/projects/bitcoin-mining-simulator/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="/projects/bitcoin-mining-simulator/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/projects/bitcoin-mining-simulator/css/style_login.css" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-    <script type="text/javascript" src="/projects/blockchain-class/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/projects/blockchain-class/js/moment.min.js"></script>
-    <script type="text/javascript" src="/projects/blockchain-class/js/transition.js"></script>
-    <script type="text/javascript" src="/projects/blockchain-class/js/collapse.js"></script>
-    <script type="text/javascript" src="/projects/blockchain-class/js/ms_exec.js"></script>
+    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/moment.min.js"></script>
+    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/transition.js"></script>
+    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/collapse.js"></script>
+    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/ms_exec.js"></script>
 
-    <script type="text/javascript" src="/projects/blockchain-class/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/projects/blockchain-class/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-xs-10 col-xs-push-1">
                     <p>MiningS is a Bitcoin
-                        <span><img class="bitcoin-image" src="/projects/blockchain-class/images/bitcoin-icon.png" alt="bitcoin image"></span>
+                        <span><img class="bitcoin-image" src="/projects/bitcoin-mining-simulator/images/bitcoin-icon.png" alt="bitcoin image"></span>
                         mining simulator using proof of work.
                     </p>
                     <p>In the simulator you will be able to mine blocks, select the mining difficulty and compete with
@@ -85,7 +85,7 @@
                 <h2 class="col-xs-10 col-xs-push-1">Join a session:</h2>
             </div>
             <div class = "row">
-                <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/blockchain-class/php/login_action.php" method="post">
+                <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/bitcoin-mining-simulator/php/login_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input type="text" class="form-control" name= "session-name" placeholder="Username">
@@ -113,7 +113,7 @@
                 <h2 class="col-xs-10 col-xs-push-1">Create a new session:</h2>
             </div>
             <div class = "row">
-                <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/blockchain-class/php/register_action.php" method="post">
+                <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/bitcoin-mining-simulator/php/register_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input type="text" class="form-control" name= "session-name" placeholder="Username">
@@ -146,7 +146,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <p>MiningS is a Bitcoin
-                            <span><img class="bitcoin-image" src="/projects/blockchain-class/images/bitcoin-icon.png" alt="bitcoin image"></span>
+                            <span><img class="bitcoin-image" src="/projects/bitcoin-mining-simulator/images/bitcoin-icon.png" alt="bitcoin image"></span>
                             mining simulator using proof of work.
                         </p>
                         <p>In the simulator you will be able to mine blocks, select the mining difficulty and compete with
@@ -193,7 +193,7 @@
                     <h2 class="col-xs-12">Join a session:</h2>
                 </div>
                 <div class = "row">
-                    <form class="col-xs-12 form-box" action = "/projects/blockchain-class/php/login_action.php" method="post">
+                    <form class="col-xs-12 form-box" action = "/projects/bitcoin-mining-simulator/php/login_action.php" method="post">
                         <div class="input-group session-input">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="Username">
@@ -221,7 +221,7 @@
                     <h2 class="col-xs-12">Create a new session:</h2>
                 </div>
                 <div class = "row">
-                    <form class="col-xs-12 form-box" action = "/projects/blockchain-class/php/register_action.php" method="post">
+                    <form class="col-xs-12 form-box" action = "/projects/bitcoin-mining-simulator/php/register_action.php" method="post">
                         <div class="input-group session-input">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input type="text" class="form-control" name= "session-name" id="session-name" placeholder="Username">
