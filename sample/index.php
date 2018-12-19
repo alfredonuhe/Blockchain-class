@@ -126,7 +126,6 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 											<span class="input-group-btn">
 												<button id="random_hash_new" class="btn btn-default" type="button">New</button>
 											</span>
-											<!--<input type="button" class="btn btn-primary" value="New merkle" id="merkle_button_new" margin-top= "30px"> -->
 										</div>
 										<div class="row">
 												<label>Nonce <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
@@ -135,7 +134,7 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 											<div class="form-group">
 													<input id="nonce_new" name= "nonce_new" type="text" class="col form-control input-margin-bottom">
 											</div>
-											<button id="hash_button_new" class="col-md-2 btn btn-primary" type="button">Try</button>
+											<button id="hash_button_new" class="col-md-2 btn btn-primary" type="button">Mine</button>
 										</div>
 										<div class="row input-margin-top">
 											<label>Block Hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>

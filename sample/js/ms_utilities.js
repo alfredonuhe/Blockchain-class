@@ -10,6 +10,7 @@ var index_vector = [7, 1, 5, 2, 6, 3, 4];
 var hash_message = '';
 var button_disabled = false;
 var text_area_on = false;
+var miningTimer = null;
 
 var info_array = [];
 var new_queue = new Queue();
@@ -267,7 +268,19 @@ function updateQueue(server_queue) {
 }
 
 /**
- * Disables hash calculating "Try" button.
+ * Enables hash calculating button.
+ */
+function enableButton() {
+    console.log("enabled");
+    $("#hash_button_new")
+        .css("background-color", "#337ab7")
+        .css("border-color", "#2e6da4");
+    button_disabled = false;
+    correctHashStyle(false);
+}
+
+/**
+ * Disables hash calculating button.
  */
 function disableButton() {
     button_disabled = true;
@@ -275,15 +288,6 @@ function disableButton() {
     $("#hash_button_new")
         .css("background-color", "#c5c5c5")
         .css("border-color", "#eaeaea");
-    window.setTimeout(function () {
-            console.log("enabled");
-            $("#hash_button_new")
-                .css("background-color", "#337ab7")
-                .css("border-color", "#2e6da4");
-            button_disabled = false;
-            correctHashStyle(false);
-        }
-        , 5000);
 }
 
 /**
