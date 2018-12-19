@@ -149,6 +149,14 @@ h2 {
 	margin-left: 65%;
 }
 
+.info-icon {
+	color: #337ab7;
+}
+
+#dinamic_board_text_btn {
+	background-color: #ffffff;
+}
+
 @media (max-device-width: 480px) {
 	#result_test_sse, #form-pannel{
 		margin-right: 6%;

@@ -95,31 +95,31 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 								</div>
 								<form id="form_ms" action="php/session_guest.php" method="post">
 										<div class="row">
-                                            <label>Version <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+                                            <label>Version <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 										</div>
 										<div class="row">
 											<input id="version_new" name= "version_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
-											<label>Previous block hash <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+											<label>Previous block hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 										</div>
 										<div class="row">
 											<input id="prev_block_new" name= "prev_block_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
-											<label>Dificulty <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+											<label>Dificulty <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 										</div>
 										<div class="row">
 											<input id="dificulty_new" name= "dificulty_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
-											<label>Timestamp <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+											<label>Timestamp <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 										</div>
 										<div class="row">
 											<input id="timestamp_new" name= "timestamp_new" type="text" class="col form-control input-margin-bottom" readonly>
 										</div>
 										<div class="row">
-											<label>Merkle Root <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+											<label>Merkle Root <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 										</div>
 										<div class="row input-group input-margin-bottom">
 											<input id="merkle_root_new" name= "merkle_root_new" type="text" class="form-control">
@@ -129,7 +129,7 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 											<!--<input type="button" class="btn btn-primary" value="New merkle" id="merkle_button_new" margin-top= "30px"> -->
 										</div>
 										<div class="row">
-												<label>Nonce <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+												<label>Nonce <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 										</div>
 										<div class="row">
 											<div class="form-group">
@@ -138,7 +138,7 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 											<button id="hash_button_new" class="col-md-2 btn btn-primary" type="button">Try</button>
 										</div>
 										<div class="row input-margin-top">
-											<label>Block Hash <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+											<label>Block Hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 										</div>
 										<div class="row">
 											<input id="block_hash_new" name= "block_hash_new" type="text" class="col-2 form-control input-margin-bottom" readonly>
@@ -148,7 +148,7 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 							<div class= "col-md-6" id= "result_test_sse">
 								<div id="prev-hash">
 									<div class="row">
-										<label>Previous valid hash <a href="#"><span class="glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></a></label>
+										<label>Previous valid hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
 									</div>
 									<div class="row">
 										<input id="prev_hash_input" name= "prev_hash_input" type="text" class="col form-control" readonly>
@@ -234,8 +234,10 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 										<input class="form-control" readonly rows = 1>
 									</div>
 								</div>
-								<textarea id= "dinamic_board_text_area" class ="form-control dinamic_board_text" readonly style="resize: none;" rows = 20></textarea>
-								<span id= "dinamic_board_text_btn" class="btn btn-default dinamic_board_text"> Hide </span>
+                                <div class="input-group dinamic_board_text">
+                                    <span id="dinamic_board_text_btn" class="input-group-addon btn btn-default">-</span>
+                                    <textarea id="dinamic_board_text_area" class="form-control custom-control" rows="20" readonly></textarea>
+                                </div>
                             </div>
 						</div>
 					</div>

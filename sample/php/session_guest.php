@@ -15,7 +15,11 @@ $block_aux = new Blockinfo($_POST['version_new'],$_POST['prev_block_new'],$_POST
 $_POST['timestamp_new'],$_POST['merkle_root_new'],$_POST['nonce_new'],$_POST['block_hash_new']);
 
 $Blockarray= unserialize(file_get_contents("data.bin"));
-isValidBlock($Blockarray, $block_aux);
+$isValid = isValidBlock($Blockarray, $block_aux);
+
+if (!$isValid){
+  determineBlockErrorMessage($Blockarray, $block_aux);
+}
 
 if ($Blockarray->size() >= $queue_size) {
   $Blockarray->dequeue();
