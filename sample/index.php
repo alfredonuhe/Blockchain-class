@@ -233,9 +233,11 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 										<input class="form-control" readonly rows = 1>
 									</div>
 								</div>
-                                <div class="input-group dinamic_board_text">
-                                    <span id="dinamic_board_text_btn" class="input-group-addon btn btn-default">-</span>
-                                    <textarea id="dinamic_board_text_area" class="form-control custom-control" rows="20" readonly></textarea>
+                                <div class="row">
+                                    <div class="input-group dinamic_board_text">
+                                        <span id="dinamic_board_text_btn" class="input-group-addon btn btn-default">-</span>
+                                        <textarea id="dinamic_board_text_area" class="form-control custom-control" rows="20" readonly></textarea>
+                                    </div>
                                 </div>
                             </div>
 						</div>
