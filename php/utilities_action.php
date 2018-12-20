@@ -80,8 +80,8 @@ function createSessionDirectory($sessionIDHash)
 function registerUser()
 {
     $msg = '';
-    $userName = strtolower($_POST["session-name"]);
-    $sessionID = strtolower($_POST["session-password"]);
+    $userName = strtolower($_POST["session-username"]);
+    $sessionID = strtolower($_POST["session-id"]);
     $sessionIDHash = hash("sha256", $sessionID);
     $path = "../session_$sessionIDHash/index.php#mining";
 
@@ -118,8 +118,8 @@ function registerUser()
 function loginUser()
 {
     $msg = '';
-    $userName = strtolower($_POST["session-name"]);
-    $sessionID = strtolower($_POST["session-password"]);
+    $userName = strtolower($_POST["session-username"]);
+    $sessionID = strtolower($_POST["session-id"]);
     $sessionIDHash = hash("sha256", $sessionID);
     $path = "../session_$sessionIDHash/index.php#mining";
     session_start();
@@ -242,6 +242,47 @@ function deleteSession($sessionIDHash)
     $db->close();
 }
 
+/**
+ * Captures the IP of a user.
+ * @return mixed returns the users's IP address.
+ */
+function getUserIP()
+{
+    $client = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote = $_SERVER['REMOTE_ADDR'];
+    if (filter_var($client, FILTER_VALIDATE_IP)) {
+        $ip = $client;
+    } elseif (filter_var($forward, FILTER_VALIDATE_IP)) {
+        $ip = $forward;
+    } else {
+        $ip = $remote;
+    }
+    return $ip;
+}
+
+/**
+ * Verifies the recaptcha of user on session login or creation.
+ * @param $recaptchaResponse response received from JS recaptcha.
+ */
+function verifyRecaptcha($recaptchaResponse){
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = array('secret' => '6Lch3IIUAAAAAB4ohF_kL1MTDSXhy3aIP53dZig3',
+        'response' => $_POST["g-recaptcha-response"],
+        'remoteip' => getUserIP());
+
+    // use key 'http' even if you send the request to https://...
+    $options = array(
+        'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    return json_decode($result);
+}
 
 /**
  * Queries used to manipulate the SQLite database:

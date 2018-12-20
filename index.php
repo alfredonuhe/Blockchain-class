@@ -26,6 +26,8 @@
 
     <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -88,12 +90,13 @@
                 <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/bitcoin-mining-simulator/php/login_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" class="form-control" name= "session-name" placeholder="Username">
+                        <input type="text" class="form-control" name= "session-username" placeholder="Username">
                     </div>
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
-                        <input type="text" class="form-control" name= "session-password" placeholder="Session id">
+                        <input type="text" class="form-control" name= "session-id" placeholder="Session id">
                     </div>
+                    <div class="g-recaptcha session-input" data-sitekey="6Lch3IIUAAAAAPp_zPJJrCJW7vShm7jH6ys5OTqh"></div>
                     <div class="row">
                         <div class="col-xs-6">
                             <button type="button" class="btn btn-md btn-default btn-block go-back-btn">Go back</button>
@@ -116,12 +119,13 @@
                 <form class="col-xs-10 col-xs-push-1 form-box" action = "/projects/bitcoin-mining-simulator/php/register_action.php" method="post">
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="text" class="form-control" name= "session-name" placeholder="Username">
+                        <input type="text" class="form-control" name= "session-username" placeholder="Username">
                     </div>
                     <div class="input-group session-input">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
-                        <input type="text" class="form-control" name= "session-password" placeholder="Session id">
+                        <input type="text" class="form-control" name= "session-id" placeholder="Session id">
                     </div>
+                    <div class="g-recaptcha session-input" data-sitekey="6Lch3IIUAAAAAPp_zPJJrCJW7vShm7jH6ys5OTqh"></div>
                     <div class="row">
                         <div class="col-xs-6">
                             <button type="button" class="btn btn-md btn-default btn-block go-back-btn">Go back</button>

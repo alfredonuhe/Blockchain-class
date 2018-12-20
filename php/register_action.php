@@ -3,9 +3,16 @@
 include('utilities_action.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    registerUser();
+    $recaptchaResult = verifyRecaptcha($_POST["g-recaptcha-response"]);
+    if ($recaptchaResult === FALSE || $recaptchaResult->success !== true) {
+        $msg = '<br/>Error. Invalid Recaptcha.';
+        include('../index.php');
+        die;
+    }else{
+        registerUser();
+    }
 } else {
-    include('../index.php');
+    header("Location:errorPage.php?errorMssg=".urlencode("Only POST methods are accepted."));
 }
 
 ?>
