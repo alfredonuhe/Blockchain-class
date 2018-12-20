@@ -71,10 +71,14 @@ body {
 .modal-content {
 	display: none;
 	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
+	margin: 5% auto auto auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 40%; /* Could be more or less, depending on screen size */
+}
+
+.disabled-glyphicon{
+	color: #dfdfdf;
 }
 
 p, ol, ul {
@@ -157,6 +161,16 @@ h2 {
 	background-color: #ffffff;
 }
 
+.as-parent{
+	height: 100%;
+}
+
+.vcenter {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
 @media (max-device-width: 480px) {
 	#result_test_sse, #form-pannel{
 		margin-right: 6%;
@@ -174,7 +188,7 @@ h2 {
 
 	.modal-content {
 		margin: 15% auto; /* 15% from the top and centered */
-		width: 100%; /* Could be more or less, depending on screen size */
+		width: 90%; /* Could be more or less, depending on screen size */
 		height: auto;
 	}
 
