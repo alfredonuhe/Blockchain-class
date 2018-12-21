@@ -1,11 +1,3 @@
-<?php
-session_start();
-/*$sessionIDHash = substr($_SERVER['REQUEST_URI'], 35, 64);
-if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $sessionIDHash) {
-    header("Location: http://localhost/projects/bitcoin-mining-simulator/index.php");
-    exit();
-}*/
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -28,9 +20,6 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
         <script src="https://www.google.com/recaptcha/api.js?onload=recaptchaCallback&render=explicit" async defer></script>
 
 		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="js/moment.min.js"></script>
-		<script type="text/javascript" src="js/transition.js"></script>
-		<script type="text/javascript" src="js/collapse.js"></script>
 
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
@@ -41,14 +30,6 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 		<script type="text/javascript" src="js/sha512.js"></script>
 		<script type="text/javascript" src="js/ripemd160.js"></script>
 		<script type="text/javascript" src="js/aes.js"></script>
-
-		<script type="text/javascript" src="js/qrcode.js"></script>
-		<script type="text/javascript" src="js/qcode-decoder.min.js"></script>
-		<script type="text/javascript" src="js/jsbn.js"></script>
-		<script type="text/javascript" src="js/ellipticcurve.js"></script>
-
-		<script type="text/javascript" src="js/coin.js"></script>
-		<script type="text/javascript" src="js/coinbin.js"></script>
 
 		<script type="text/javascript" src="js/queue.js"></script>
 		<script type="text/javascript" src="js/ms_utilities.js"></script>
@@ -246,26 +227,22 @@ if(!isset($_SESSION['sessionIDHash']) || $_SESSION['sessionIDHash'] !== $session
 						<h2>About <small>MiningS</small></h2>
 						<p>Version 2.0</p>
 						<p>Github <a href="https://github.com/alfredonuhe/blockchain-class">https://github.com/alfredonuhe/blockchain-class</a></p>
-						<h3>What is Bitcoin?</h3>
+						<h3>What is MiningS?</h3>
 						<p>Bitcoin is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See <a href="http://www.weusecoins.com/" target="_blank">weusecoins.com</a> for more information.</p>
 						<p>If you are looking to buy some Bitcoin try <a href="https://localbitcoins.com/?ch=173j" target="_blank">LocalBitcoins.com</a>.</p>
-						<h3>Information</h3>
+						<h3>FAQ's</h3>
 						<p>Coinb.in is a free and open source project released under the MIT license, originally by <a href="https://bitcointalk.org/index.php?action=profile;u=34834" target="_blank">OutCast3k</a> in 2013. Discussion of the project can be found at <a href="https://bitcointalk.org/index.php?topic=390046" target="_blank">bitcointalk.org</a> during its early testing stages when its primary focus was to develop a proof of concept multisig solution in javascript.</p>
 						<p>Coinb.in is run and funded by the generosity of others in terms of <a href="https://github.com/OutCast3k/coinbin/graphs/contributors" target="_blank">development</a> and hosting.</p>
-						<h3>Privacy</h3>
-						<p>Coinb.in beleives strongly in privacy, not only do we support the use of TOR, the site does not collect and store IP or transaction data via our servers nor do we store your bitcoins private key. We do route traffic via cloudflare using an SSL certificate.</p>
-						<h3>Support</h3>
-						<p>We recommend that you first check our <a href="https://status.coinb.in/" target="_blank">service status</a> page, if the problem persists you can contact us by emailing support{at}coinb.in.</p>
 						<h3>Donate</h3>
-						<p>Please donate to <a href="bitcoin:1CWHWkTWaq1K5hevimJia3cyinQsrgXUvg">1CWHWkTWaq1K5hevimJia3cyinQsrgXUvg</a> if you found this project useful or want to see more features!</p>
+						<p>Please donate to THIS ADDRESS if you found this project useful and want to support the developers!</p>
 					</div>
 				</div>
-			</div>
-            <div class="footer container-fluid">
-                <div class="text-right row">
-                    <p class="text-muted footer-text col-xs-12" align="right" >Version 2.0</p>
+                <div class="footer container-fluid">
+                    <div class="text-right row">
+                        <p class="text-muted footer-text col-xs-12" align="right" >Version 2.0</p>
+                    </div>
                 </div>
-            </div>
+			</div>
 			<div class = "container">
 				<div id="myModal" class="modal">
 					<!-- Modal content -->

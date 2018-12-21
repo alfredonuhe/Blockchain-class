@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 
-    <title>Bitcoin Wallet by Coinb.in</title>
+    <title>MiningS</title>
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta name="keywords"
-          content="bitcoin, wallet, multisig, multisignature, address, browser, segwit, javascript, js, broadcast, transaction, verify, decode"/>
+          content="bitcoin, javascript, js, verify, mining, hashing, hash"/>
     <meta name="description"
-          content="A Bitcoin Wallet written in Javascript. Supports Multisig, SegWit, Custom Transactions, nLockTime and more!"/>
+          content="A mining simulator for didactic purposes."/>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +19,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
     <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/moment.min.js"></script>
-    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/transition.js"></script>
-    <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/collapse.js"></script>
     <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/ms_exec.js"></script>
 
     <script type="text/javascript" src="/projects/bitcoin-mining-simulator/js/bootstrap.min.js"></script>
@@ -41,15 +38,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-10 col-xs-push-1">
-                    <p>MiningS is a Bitcoin
-                        <span><img class="bitcoin-image" src="/projects/bitcoin-mining-simulator/images/bitcoin-icon.png" alt="bitcoin image"></span>
-                        mining simulator using proof of work.
-                    </p>
+                    <p>MiningS is a Bitcoin mining simulator using proof of work.</p>
                     <p>In the simulator you will be able to mine blocks, select the mining difficulty and compete with
                         other people to mine as many blocks as possible.</p>
-                    <p>If you don't have a MiningS session yet, create one with a session name and password of your
-                        choice and invite other people to compete in it. Otherwise, if you already have a session or
-                        have been invited to one, login with the session name and password.</p>
+                    <p>If you don't have a MiningS session yet, create one with a username and session ID of your
+                        choice. Once created, invite other people to compete on it. Otherwise, if you already have a session or
+                        have been invited to one, login with the username and session ID.</p>
                     <p>Have Fun!</p>
                 </div>
             </div>
@@ -149,15 +143,12 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <p>MiningS is a Bitcoin
-                            <span><img class="bitcoin-image" src="/projects/bitcoin-mining-simulator/images/bitcoin-icon.png" alt="bitcoin image"></span>
-                            mining simulator using proof of work.
-                        </p>
+                        <p>MiningS is a Bitcoin mining simulator using proof of work.</p>
                         <p>In the simulator you will be able to mine blocks, select the mining difficulty and compete with
                             other people to mine as many blocks as possible.</p>
-                        <p>If you don't have a MiningS session yet, create one with a session name and password of your
-                            choice and invite other people to compete in it. Otherwise, if you already have a session or
-                            have been invited to one, login with the session name and password.</p>
+                        <p>If you don't have a MiningS session yet, create one with a username and session ID of your
+                            choice. Once created, invite other people to compete on it. Otherwise, if you already have a session or
+                            have been invited to one, login with the username and session ID.</p>
                         <p>Have Fun!</p>
                     </div>
                 </div>
@@ -242,7 +233,6 @@
                                 <button type="submit" class="btn btn-md btn-default btn-block">Create</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
