@@ -16,10 +16,11 @@ class Blockinfo
     public $merkle_root_ms;
     public $nonce_ms;
     public $block_hash_ms;
+    public $miner;
     public $valid_block;
     public $blockErrorMessage;
 
-    function __construct($TVersion_ms, $TPrev_block_ms, $TDificulty_ms, $TTimestamp_ms, $TMerkle_root_ms, $TNonce_ms, $TBlock_hash_ms)
+    function __construct($TVersion_ms, $TPrev_block_ms, $TDificulty_ms, $TTimestamp_ms, $TMerkle_root_ms, $TNonce_ms, $TBlock_hash_ms, $TMiner)
     {
         $this->version_ms = $TVersion_ms;
         $this->prev_block_ms = $TPrev_block_ms;
@@ -28,6 +29,7 @@ class Blockinfo
         $this->merkle_root_ms = $TMerkle_root_ms;
         $this->nonce_ms = $TNonce_ms;
         $this->block_hash_ms = $TBlock_hash_ms;
+        $this->miner = $TMiner;
         $this->valid_block = false;
         $this->blockErrorMessage = "";
     }

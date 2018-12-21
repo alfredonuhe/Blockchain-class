@@ -9,10 +9,11 @@ header('Content-type: text/html; charset=utf-8');
 include "utilities.php";
 include "queue.php";
 
+session_start();
 storeUserIP(false);
 $queue_size = 10;
 $block_aux = new Blockinfo($_POST['version_new'],$_POST['prev_block_new'],$_POST['dificulty_new'],
-$_POST['timestamp_new'],$_POST['merkle_root_new'],$_POST['nonce_new'],$_POST['block_hash_new']);
+$_POST['timestamp_new'],$_POST['merkle_root_new'],$_POST['nonce_new'],$_POST['block_hash_new'], $_SESSION['username']);
 
 $Blockarray= unserialize(file_get_contents("data.bin"));
 $isValid = isValidBlock($Blockarray, $block_aux);

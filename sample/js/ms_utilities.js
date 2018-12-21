@@ -321,8 +321,9 @@ function showData(index) {
         new_data = input_data[i].name.toUpperCase() + ": " + frontalPadding(object_values[i + 1], input_data[i].allowed_length) + "\n";
         text_area.val(text_area.val() + new_data);
     }
-    if (object_values[input_data.length]) {
-        text_area.val(text_area.val() + "\n\n" + object_values[object_values.length-1]);
+    text_area.val(text_area.val() + "\nMINER: " + object_values[object_values.length-3] + "\n");
+    if (!object_values[object_values.length-2]) {
+        text_area.val(text_area.val() + object_values[object_values.length-1]);
     }
 }
 
