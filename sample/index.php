@@ -24,12 +24,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 
-		<script type="text/javascript" src="js/crypto-min.js"></script>
 		<script type="text/javascript" src="js/crypto-sha256.js"></script>
-		<script type="text/javascript" src="js/crypto-sha256-hmac.js"></script>
-		<script type="text/javascript" src="js/sha512.js"></script>
-		<script type="text/javascript" src="js/ripemd160.js"></script>
-		<script type="text/javascript" src="js/aes.js"></script>
 
 		<script type="text/javascript" src="js/queue.js"></script>
 		<script type="text/javascript" src="js/ms_utilities.js"></script>
@@ -237,11 +232,16 @@
 						<p>Please donate to THIS ADDRESS if you found this project useful and want to support the developers!</p>
 					</div>
 				</div>
-                <div class="footer container-fluid">
-                    <div class="text-right row">
-                        <p class="text-muted footer-text col-xs-12" align="right" >Version 2.0</p>
+            </div>
+            <div class = "row">
+                <div class = "container-fluid">
+                    <div class="footer container-fluid">
+                        <div class="text-right row">
+                            <p class="text-muted footer-text col-xs-12" align="right" >Version 2.0</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 			</div>
 			<div class = "container">
 				<div id="myModal" class="modal">
