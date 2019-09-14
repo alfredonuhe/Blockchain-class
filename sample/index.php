@@ -233,176 +233,173 @@
 					</div>
 				</div>
             </div>
-            <div class = "row">
-                <div class = "container-fluid">
-                    <div class="footer container-fluid">
-                        <div class="text-right row">
-                            <p class="text-muted footer-text col-xs-12" align="right" >Version 2.0</p>
+            <div class = "container-fluid">
+                <div class="row footer">
+                    <div class="text-right col-sm-12">
+                        <p class="text-muted footer-text col-xs-12" align="right" >Version 2.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "container">
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class = "row">
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-left previous-modal disabled-glyphicon"></span>
+                        </div>
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-right next-modal"></span>
+                        </div>
+                        <div class = "col-md-8 col-xs-8 text-center">
+                            <span class="close close-modal">&times;</span>
+                        </div>
+                    </div>
+                    <div class = "row as-parent">
+                        <div class = "col-md-12 col-xs-12 as-parent">
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <h3>Welcome to MiningS!</h3>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <p>Skip the intro if not interested. To close it click on the top right cross.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <div class = "row">
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
+                        </div>
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-right next-modal"></span>
+                        </div>
+                        <div class = "col-md-8 col-xs-8 text-center">
+                            <span class="close close-modal">&times;</span>
+                        </div>
+                    </div>
+                    <div class = "row as-parent">
+                        <div class = "col-md-12 col-xs-12 as-parent">
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <h3>Step 1/4: Concepts</h3>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <p>Before starting let's get familiarized with the app. Firstly, we will see the concepts used:</p>
+                                    <ul>
+                                        <li><strong>Version:</strong> the version is a 4 character input which identifies the block.</li>
+                                        <li><strong>Previous block hash:</strong> The previous valid block hash of the blockchain. It appears in top of the right side panel.</li>
+                                        <li><strong>Difficulty:</strong> The difficulty used to mine the previous block.</li>
+                                        <li><strong>Timestamp:</strong> Auto-generated input with the actual Unix time.</li>
+                                        <li><strong>Merkle Root:</strong> hash of the block merkle root. To calculate a new Merkle Root hash click on the "New" button.</li>
+                                        <li><strong>Nonce:</strong> Auto-generated nonce of the block.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <div class = "row">
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
+                        </div>
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-right next-modal"></span>
+                        </div>
+                        <div class = "col-md-8 col-xs-8 text-center">
+                            <span class="close close-modal">&times;</span>
+                        </div>
+                    </div>
+                    <div class = "row as-parent">
+                        <div class = "col-md-12 col-xs-12 as-parent">
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <h3>Step 2/4: Correct Blocks</h3>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <p>Mined block appear on the left side of the page. Blocks can be either correct or incorrect (green or red). To
+                                        correctly mine a block you need to input the correct data, and this is:</p>
+                                    <ol start="1">
+                                        <li><span>The previous block hash of the most recent valid block.</span></li>
+                                        <li><span>The same difficulty as the the rest of mined blocks.</span></li>
+                                        <li><span>A newly generated Merkle Root hash.</span></li>
+                                    </ol>
+                                    <p>If this three conditions are satisfied when a block is generated, it will appear in green. Otherwise, it will
+                                        appear in red.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <div class = "row">
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
+                        </div>
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-right next-modal"></span>
+                        </div>
+                        <div class = "col-md-8 col-xs-8 text-center">
+                            <span class="close close-modal">&times;</span>
+                        </div>
+                    </div>
+                    <div class = "row as-parent">
+                        <div class = "col-md-12 col-xs-12 as-parent">
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <h3>Step 3/4: Mining</h3>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <p>To generate a block, introduce valid input data and click on the "Try" button. This will calculate the hash of
+                                        your input data and will show it below in the "Block Hash" dialog. Each time the button "Try" is clicked a new
+                                        hash is calculated with a new nonce.</p>
+                                    <p>In order to generate a block, the hash must have the same number of 0's at the beguinning as the specified
+                                        difficulty.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <div class = "row">
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
+                        </div>
+                        <div class = "col-md-2 col-xs-2">
+                            <span class="glyphicon glyphicon-chevron-right next-modal disabled-glyphicon"></span>
+                        </div>
+                        <div class = "col-md-8 col-xs-8 text-center">
+                            <span class="close close-modal">&times;</span>
+                        </div>
+                    </div>
+                    <div class = "row as-parent">
+                        <div class = "col-md-12 col-xs-12 as-parent">
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <h3>Step 4/4: Enjoy</h3>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <p>Have fun with the simulator and leave a tip in the "About" tab if you will!</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-			</div>
-			<div class = "container">
-				<div id="myModal" class="modal">
-					<!-- Modal content -->
-					<div class="modal-content">
-                        <div class = "row">
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-left previous-modal disabled-glyphicon"></span>
-                            </div>
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-right next-modal"></span>
-                            </div>
-                            <div class = "col-md-8 col-xs-8 text-center">
-                                <span class="close close-modal">&times;</span>
-                            </div>
-                        </div>
-                        <div class = "row as-parent">
-                            <div class = "col-md-12 col-xs-12 as-parent">
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <h3>Welcome to MiningS!</h3>
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <p>Skip the intro if not interested. To close it click on the top right cross.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-					</div>
-                    <div class="modal-content">
-                        <div class = "row">
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
-                            </div>
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-right next-modal"></span>
-                            </div>
-                            <div class = "col-md-8 col-xs-8 text-center">
-                                <span class="close close-modal">&times;</span>
-                            </div>
-                        </div>
-                        <div class = "row as-parent">
-                            <div class = "col-md-12 col-xs-12 as-parent">
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <h3>Step 1/4: Concepts</h3>
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <p>Before starting let's get familiarized with the app. Firstly, we will see the concepts used:</p>
-                                        <ul>
-                                            <li><strong>Version:</strong> the version is a 4 character input which identifies the block.</li>
-                                            <li><strong>Previous block hash:</strong> The previous valid block hash of the blockchain. It appears in top of the right side panel.</li>
-                                            <li><strong>Difficulty:</strong> The difficulty used to mine the previous block.</li>
-                                            <li><strong>Timestamp:</strong> Auto-generated input with the actual Unix time.</li>
-                                            <li><strong>Merkle Root:</strong> hash of the block merkle root. To calculate a new Merkle Root hash click on the "New" button.</li>
-                                            <li><strong>Nonce:</strong> Auto-generated nonce of the block.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-content">
-                        <div class = "row">
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
-                            </div>
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-right next-modal"></span>
-                            </div>
-                            <div class = "col-md-8 col-xs-8 text-center">
-                                <span class="close close-modal">&times;</span>
-                            </div>
-                        </div>
-                        <div class = "row as-parent">
-                            <div class = "col-md-12 col-xs-12 as-parent">
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <h3>Step 2/4: Correct Blocks</h3>
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <p>Mined block appear on the left side of the page. Blocks can be either correct or incorrect (green or red). To
-                                            correctly mine a block you need to input the correct data, and this is:</p>
-                                        <ol start="1">
-                                            <li><span>The previous block hash of the most recent valid block.</span></li>
-                                            <li><span>The same difficulty as the the rest of mined blocks.</span></li>
-                                            <li><span>A newly generated Merkle Root hash.</span></li>
-                                        </ol>
-                                        <p>If this three conditions are satisfied when a block is generated, it will appear in green. Otherwise, it will
-                                            appear in red.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-content">
-                        <div class = "row">
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
-                            </div>
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-right next-modal"></span>
-                            </div>
-                            <div class = "col-md-8 col-xs-8 text-center">
-                                <span class="close close-modal">&times;</span>
-                            </div>
-                        </div>
-                        <div class = "row as-parent">
-                            <div class = "col-md-12 col-xs-12 as-parent">
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <h3>Step 3/4: Mining</h3>
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <p>To generate a block, introduce valid input data and click on the "Try" button. This will calculate the hash of
-                                            your input data and will show it below in the "Block Hash" dialog. Each time the button "Try" is clicked a new
-                                            hash is calculated with a new nonce.</p>
-                                        <p>In order to generate a block, the hash must have the same number of 0's at the beguinning as the specified
-                                            difficulty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-content">
-                        <div class = "row">
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-left previous-modal"></span>
-                            </div>
-                            <div class = "col-md-2 col-xs-2">
-                                <span class="glyphicon glyphicon-chevron-right next-modal disabled-glyphicon"></span>
-                            </div>
-                            <div class = "col-md-8 col-xs-8 text-center">
-                                <span class="close close-modal">&times;</span>
-                            </div>
-                        </div>
-                        <div class = "row as-parent">
-                            <div class = "col-md-12 col-xs-12 as-parent">
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <h3>Step 4/4: Enjoy</h3>
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <p>Have fun with the simulator and leave a tip in the "About" tab if you will!</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-			</div>
-		</div>
+        </div>
 	</body>
 </html>

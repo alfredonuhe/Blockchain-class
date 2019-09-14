@@ -127,9 +127,9 @@ ol > li:before {
 
 .footer {
 	height: 60px;
-	background-color: #f5f5f5;
+	background-color: #f8f8f8;
+	border:1px solid #e7e7e7;
 	margin-top: 2%;
-	width: 100%;
 }
 
 .footer-text {
