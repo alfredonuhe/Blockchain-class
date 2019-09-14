@@ -71,31 +71,31 @@
 								</div>
 								<form id="form_ms" action="php/session_guest.php" method="post">
 										<div class="row">
-                                            <label>Version <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+                                            <label>Version <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="The Bitcoin protocol version number."></span></label>
 										</div>
 										<div class="row">
 											<input id="version_new" name= "version_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
-											<label>Previous block hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+											<label>Previous block hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="The previous block header hash."></span></label>
 										</div>
 										<div class="row">
 											<input id="prev_block_new" name= "prev_block_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
-											<label>Dificulty <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+											<label>Dificulty <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Number of 0's that must be found when hashing the block header in order to meet the required level of proof of work to maintain the block time at 10 minutes."></span></label>
 										</div>
 										<div class="row">
 											<input id="dificulty_new" name= "dificulty_new" type="text" class="col form-control input-margin-bottom">
 										</div>
 										<div class="row">
-											<label>Timestamp <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+											<label>Timestamp <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="The timestamp of the block in UNIX (number of seconds since the 1st of January 1970)."></span></label>
 										</div>
 										<div class="row">
 											<input id="timestamp_new" name= "timestamp_new" type="text" class="col form-control input-margin-bottom" readonly>
 										</div>
 										<div class="row">
-											<label>Merkle Root <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+											<label>Merkle Root <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="A hash of the root of the merkle tree, representing all of the transactions contained in the block."></span></label>
 										</div>
 										<div class="row input-group input-margin-bottom">
 											<input id="merkle_root_new" name= "merkle_root_new" type="text" class="form-control">
@@ -104,7 +104,7 @@
 											</span>
 										</div>
 										<div class="row">
-												<label>Nonce <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+												<label>Nonce <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Value altered by the miners to calculate new hashes and try to meet the block difficulty."></span></label>
 										</div>
 										<div class="row">
 											<div class="form-group">
@@ -113,7 +113,7 @@
 											<button id="hash_button_new" class="col-md-2 btn btn-primary" type="button">Mine</button>
 										</div>
 										<div class="row input-margin-top">
-											<label>Block Hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+											<label>Block Hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Hash calculated using all the block header information."></span></label>
 										</div>
 										<div class="row">
 											<input id="block_hash_new" name= "block_hash_new" type="text" class="col-2 form-control input-margin-bottom" readonly>
@@ -123,7 +123,7 @@
 							<div class= "col-md-6" id= "result_test_sse">
 								<div id="prev-hash">
 									<div class="row">
-										<label>Previous valid hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."></span></label>
+										<label>Previous valid hash <span class="glyphicon glyphicon-info-sign info-icon" data-toggle="popover" data-placement="top" data-content="Header's hash value of the last valid block in the blockchain."></span></label>
 									</div>
 									<div class="row">
 										<input id="prev_hash_input" name= "prev_hash_input" type="text" class="col form-control" readonly>
@@ -221,15 +221,14 @@
 					<div class="tab-pane" id="about">
 						<h2>About <small>MiningS</small></h2>
 						<p>Version 2.0</p>
-						<p>Github <a href="https://github.com/alfredonuhe/blockchain-class">https://github.com/alfredonuhe/blockchain-class</a></p>
-						<h3>What is MiningS?</h3>
+						<p>Github <a href="https://github.com/alfredonuhe/bitcoin-mining-simulator">https://github.com/alfredonuhe/bitcoin-mining-simulator</a></p>
+                        <h3>What is Bitcoin?</h3>
 						<p>Bitcoin is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See <a href="http://www.weusecoins.com/" target="_blank">weusecoins.com</a> for more information.</p>
 						<p>If you are looking to buy some Bitcoin try <a href="https://localbitcoins.com/?ch=173j" target="_blank">LocalBitcoins.com</a>.</p>
-						<h3>FAQ's</h3>
-						<p>Coinb.in is a free and open source project released under the MIT license, originally by <a href="https://bitcointalk.org/index.php?action=profile;u=34834" target="_blank">OutCast3k</a> in 2013. Discussion of the project can be found at <a href="https://bitcointalk.org/index.php?topic=390046" target="_blank">bitcointalk.org</a> during its early testing stages when its primary focus was to develop a proof of concept multisig solution in javascript.</p>
-						<p>Coinb.in is run and funded by the generosity of others in terms of <a href="https://github.com/OutCast3k/coinbin/graphs/contributors" target="_blank">development</a> and hosting.</p>
-						<h3>Donate</h3>
-						<p>Please donate to THIS ADDRESS if you found this project useful and want to support the developers!</p>
+                        <h3>What is MiningS?</h3>
+                        <p>MiningS is an open-source Bitcoin proof of work mining simulator. It's objective is to visually show the proof of work mechanism of the Bitcoin blockchain.</p>
+                        <h3>Donate</h3>
+						<p>Please donate to THIS ADDRESS if you found this project useful and want to support the developer!</p>
 					</div>
 				</div>
             </div>
